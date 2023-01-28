@@ -1,0 +1,126 @@
+ls
+whoami
+ls -la
+clear-scrollback 
+alias clear=clear-scrollback
+clear
+ls
+exit
+ls
+alias clear clear-scrollback
+clear
+ls
+ls
+helix
+ls
+c
+clear
+q
+exit
+c
+q
+dired
+find-file
+lunar-phases
+c
+grep
+c
+c
+ls
+find-file init.el 
+c
+load-theme doom
+c
+print "Hello"
+format t "Hello"
+format "Hello"
+format "Hello\n"
+format "Hello"
+c
+eshell-path-env
+eshell-path-env
+c
+describe-variable eshell-path-env
+format eshell-path-env
+print eshell-path-env
+(print eshell-path-env)
+(format eshell-path-env)
+c
+eshell-debug 
+c
+man man
+c
+whoami
+c
+addpath 
+cd ~/.config/bspwm/scripts/
+ls
+(format eshell-path-env)
+(format DIRECTORY)
+c
+cd
+q
+ls
+c
+alias
+c
+cdd
+c
+gut
+c
+giit
+c
+alias ff 'find-file $1'
+alias d 'dired $1'
+alias fd 'find-dired $PWD ""'
+ls
+cd eshell/
+ls
+l
+la
+ls -la
+ff alias 
+c
+cd
+popd
+cd .config/emacs/
+c
+ls
+c
+less
+less init.el 
+c
+ls
+c
+hgfhdj
+c
+(format eshell-prompt-function)
+q
+ls
+cd .config/emacs/
+ls
+c
+ls
+ff init.el
+ls
+(autoload 'epe-theme-lambda "eshell-prompt-extras")
+(autoload 'epe-theme-dakrone "eshell-prompt-extras")
+q
+exit
+q
+ls
+cd .config/emacs/
+ld
+ls
+ls
+ls
+cd .config/emacs/
+c
+ls
+c
+ls
+echo *
+q
+ls
+q
+q
