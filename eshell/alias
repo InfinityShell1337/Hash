@@ -1,5 +1,7 @@
-alias fd find-dired $PWD ""
-alias d dired $1
-alias ff find-file $1
-alias q exit
+alias la ls -a
+alias l ls -la
 alias c clear-scrollback
+alias q exit
+alias ff find-file $1
+alias d dired $1
+alias fd find-dired $PWD ""

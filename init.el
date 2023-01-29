@@ -157,8 +157,8 @@
   ("C-c p" . projectile-command-map)
   :init
   ;; NOTE: Set this to the folder where you keep your Git repos!
-  (when (file-directory-p "~/Projects")
-    (setq projectile-project-search-path '("~/Projects")))
+  (when (file-directory-p "~")
+    (setq projectile-project-search-path '("~")))
   (setq projectile-switch-project-action #'projectile-dired))
 
 ;; Disable files~
@@ -172,12 +172,17 @@
  "r" '(:ignore t :which-key "run")
  "re" '(eshell :which-key "eshell")
 
+ "b" '(:ignore t :which-key "buffer")
+ "bb" '(counsel-switch-buffer :which-key "switch")
+ "bk" '(kill-buffer :which-key "kill")
+
  "." '(counsel-find-file :which-key "file")
  "/" '(counsel-M-x :which-key "M-x")
  )
 
 (general-define-key
- "C-M-j" 'counsel-switch-buffer)
+ "C-M-j" 'counsel-switch-buffer
+ "C-x b" 'counsel-switch-buffer)
 
 ;; Transparency
 (set-frame-parameter (selected-frame) 'alpha '(90 . 50))
@@ -185,9 +190,11 @@
 
 ;; theme
 ;(load-theme 'doom-Iosvkem t)
+;(load-theme 'doom-horizon t)
+(load-theme 'doom-outrun-electric t)
 ;(load-theme 'doom-dracula t)
 ;(load-theme 'doom-palenight t)
-(load-theme 'doom-challenger-deep t)
+;(load-theme 'doom-challenger-deep t)
 
 ;; do not touch
 (custom-set-variables

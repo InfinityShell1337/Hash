@@ -1,47 +1,3 @@
-ls
-whoami
-ls -la
-clear-scrollback 
-alias clear=clear-scrollback
-clear
-ls
-exit
-ls
-alias clear clear-scrollback
-clear
-ls
-ls
-helix
-ls
-c
-clear
-q
-exit
-c
-q
-dired
-find-file
-lunar-phases
-c
-grep
-c
-c
-ls
-find-file init.el 
-c
-load-theme doom
-c
-print "Hello"
-format t "Hello"
-format "Hello"
-format "Hello\n"
-format "Hello"
-c
-eshell-path-env
-eshell-path-env
-c
-describe-variable eshell-path-env
-format eshell-path-env
 print eshell-path-env
 (print eshell-path-env)
 (format eshell-path-env)
@@ -123,4 +79,50 @@ echo *
 q
 ls
 q
+q
+ls
+c
+ls -la
+cd /
+ls
+c
+ls
+cd 
+c
+l
+ls
+c
+ls
+cd LINUX-DISTROS/
+ls
+l
+ls -la
+cd
+c
+l
+l
+l
+alias l 'ls -la'
+l
+alias la 'ls -a'
+la
+c
+ls
+ff .emacs.d/eshell/alias
+ls
+c
+la
+l
+c
+la
+tmux
+ls
+l
+ls
+c
+c
+whoami
+c
+q
+ls
 q
