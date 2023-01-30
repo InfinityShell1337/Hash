@@ -103,6 +103,10 @@
   :prefix "SPC"
   :global-prefix "C-M-<tab>")
 
+(general-define-key
+ "C-M-j" 'counsel-switch-buffer
+ "C-x b" 'counsel-switch-buffer)
+
 (use-package which-key
   :defer 0
   :diminish which-key-mode
@@ -172,7 +176,7 @@
   :hook (org-mode . hash/org-mode-visual-fill))
 
 (defun hash/org-mode-visual-fill ()
-  (setq visual-fill-column-width 100
+  (setq visual-fill-column-width 200
 	visual-fill-column-center-text t)
   (visual-fill-column-mode 1))
 
@@ -183,22 +187,13 @@
 (add-to-list 'org-structure-template-alist '("py" . "src python"))
 (add-to-list 'org-structure-template-alist '("js" . "src javascript"))
 
-(setq make-backup-files nil)
+(defun hash/org-babel-tangle-config ()
+  (when (string-equal (buffer-file-name)
+                       (expand-file-name "~/.emacs.d/Emacs.org"))
+    (let ((org-confirm-babel-evaluate nil))
+      (org-babel-tangle))))
 
-(hash/leader-keys
- "c" '(:ignore t :which-key "config")
- "ct" '(counsel-load-theme :which-key "theme")
-
- "r" '(:ignore t :which-key "run")
- "re" '(eshell :which-key "eshell")
-
- "b" '(:ignore t :which-key "buffer")
- "bb" '(counsel-switch-buffer :which-key "switch")
- "bk" '(kill-buffer :which-key "kill")
-
- "." '(counsel-find-file :which-key "file")
- "/" '(counsel-M-x :which-key "M-x")
- )
+(add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'hash/org-babel-tangle-config)))
 
 (defun hash/org-mode-setup ()
   (org-indent-mode)
@@ -222,9 +217,22 @@
                 (org-level-8 . 1.1)))
   (set-face-attribute (car face) nil :weight 'regular :height (cdr face)))
 
-(general-define-key
- "C-M-j" 'counsel-switch-buffer
- "C-x b" 'counsel-switch-buffer)
+(setq make-backup-files nil)
+
+(hash/leader-keys
+ "c" '(:ignore t :which-key "config")
+ "ct" '(counsel-load-theme :which-key "theme")
+
+ "r" '(:ignore t :which-key "run")
+ "re" '(eshell :which-key "eshell")
+
+ "b" '(:ignore t :which-key "buffer")
+ "bb" '(counsel-switch-buffer :which-key "switch")
+ "bk" '(kill-buffer :which-key "kill")
+
+ "." '(counsel-find-file :which-key "file")
+ "/" '(counsel-M-x :which-key "M-x")
+ )
 
 (set-frame-parameter (selected-frame) 'alpha '(90 . 50))
 (add-to-list 'default-frame-alist '(alpha . (90 . 50)))

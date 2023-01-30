@@ -18,7 +18,7 @@
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit) ; Make ESC quit prompts
 
 #+end_src
-** Packages
+** Initialize Packages
 *** Init Packages
 #+begin_src emacs-lisp
 
@@ -43,7 +43,7 @@
 (setq use-package-always-ensure t)
 
 #+end_src
-*** Line numbers
+** Line numbers
 #+begin_src emacs-lisp
 
 (column-number-mode)
@@ -58,19 +58,19 @@
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 #+end_src
-*** doom-themes
+** doom-themes
 #+begin_src emacs-lisp
 
 (use-package doom-themes)
 
 #+end_src
-*** all-the-icons
+** all-the-icons
 #+begin_src emacs-lisp
 
 (use-package all-the-icons)
 
 #+end_src
-*** Ivy for completions
+** Ivy for completions
 #+begin_src emacs-lisp
 
 (use-package ivy
@@ -92,7 +92,7 @@
   (ivy-mode 1))
 
 #+end_src
-*** Counsel for cool stuff
+** Counsel for cool stuff
 #+begin_src emacs-lisp
 
 (use-package counsel
@@ -108,7 +108,7 @@
 	  )
 
 #+end_src
-*** ivy-rich
+** ivy-rich
 #+begin_src emacs-lisp
 
 (use-package ivy-rich
@@ -116,14 +116,14 @@
   :init (ivy-rich-mode 1))
 
 #+end_src
-*** rainbow-delimiters
+** rainbow-delimiters
 #+begin_src emacs-lisp
 
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
 
 #+end_src
-*** doom-modeline
+** doom-modeline
 #+begin_src emacs-lisp
 
 (use-package doom-modeline
@@ -132,7 +132,7 @@
   :custom ((doom-modeline-height 30)))
 
 #+end_src
-*** helpful
+** helpful
 #+begin_src emacs-lisp
 
 (use-package helpful
@@ -147,7 +147,8 @@
   ([remap describe-key] . helpful-key))
 
 #+end_src
-*** General
+** General
+*** Main
 #+begin_src emacs-lisp
 
 (use-package general
@@ -159,7 +160,15 @@
   :global-prefix "C-M-<tab>")
 
 #+end_src
-*** Which key
+*** general keybindings
+#+begin_src emacs-lisp
+
+(general-define-key
+ "C-M-j" 'counsel-switch-buffer
+ "C-x b" 'counsel-switch-buffer)
+
+#+end_src
+** Which key
 #+begin_src emacs-lisp
 
 (use-package which-key
@@ -170,7 +179,8 @@
   (setq which-key-idle-delay 1))
 
 #+end_src
-*** Evil
+** Evil
+*** Main
 #+begin_src emacs-lisp
 
 (use-package evil
@@ -200,14 +210,15 @@
   (evil-collection-init))
 
 #+end_src
-*** hydra
+** hydra
 #+begin_src emacs-lisp
 
 (use-package hydra
   :defer t)
 
 #+end_src
-*** projectile
+** projectile
+*** Main
 #+begin_src emacs-lisp
 
 (use-package projectile
@@ -230,7 +241,8 @@
   :config (counsel-projectile-mode))
 
 #+end_src
-*** magit
+** magit
+*** Main
 #+begin_src emacs-lisp
 
 (use-package magit
@@ -244,7 +256,8 @@
 (use-package forge)
 
 #+end_src
-*** org
+** Org
+*** Main
 #+begin_src emacs-lisp
 
 (use-package org
@@ -271,12 +284,11 @@
   :hook (org-mode . hash/org-mode-visual-fill))
 
 (defun hash/org-mode-visual-fill ()
-  (setq visual-fill-column-width 100
+  (setq visual-fill-column-width 200
 	visual-fill-column-center-text t)
   (visual-fill-column-mode 1))
 
 #+end_src
-** Configuration
 *** Org templates
 #+begin_src emacs-lisp
 
@@ -288,30 +300,15 @@
 (add-to-list 'org-structure-template-alist '("js" . "src javascript"))
 
 #+end_src
-*** Disable files~
+*** Auto-tangle Configuration files
 #+begin_src emacs-lisp
+  (defun hash/org-babel-tangle-config ()
+    (when (string-equal (buffer-file-name)
+                         (expand-file-name "~/.emacs.d/Emacs.org"))
+      (let ((org-confirm-babel-evaluate nil))
+        (org-babel-tangle))))
 
-(setq make-backup-files nil)
-
-#+end_src
-*** Keybindings
-#+begin_src emacs-lisp
-
-(hash/leader-keys
- "c" '(:ignore t :which-key "config")
- "ct" '(counsel-load-theme :which-key "theme")
-
- "r" '(:ignore t :which-key "run")
- "re" '(eshell :which-key "eshell")
-
- "b" '(:ignore t :which-key "buffer")
- "bb" '(counsel-switch-buffer :which-key "switch")
- "bk" '(kill-buffer :which-key "kill")
-
- "." '(counsel-find-file :which-key "file")
- "/" '(counsel-M-x :which-key "M-x")
- )
-
+  (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'hash/org-babel-tangle-config)))
 #+end_src
 *** Org Setup
 #+begin_src emacs-lisp
@@ -343,29 +340,46 @@
   (set-face-attribute (car face) nil :weight 'regular :height (cdr face)))
 
 #+end_src
-*** general keybindings
+** Disable backup files
 #+begin_src emacs-lisp
 
-(general-define-key
- "C-M-j" 'counsel-switch-buffer
- "C-x b" 'counsel-switch-buffer)
+  (setq make-backup-files nil)
 
 #+end_src
-*** Transparency
+** Keybindings
 #+begin_src emacs-lisp
 
-(set-frame-parameter (selected-frame) 'alpha '(90 . 50))
-(add-to-list 'default-frame-alist '(alpha . (90 . 50)))
+(hash/leader-keys
+ "c" '(:ignore t :which-key "config")
+ "ct" '(counsel-load-theme :which-key "theme")
+
+ "r" '(:ignore t :which-key "run")
+ "re" '(eshell :which-key "eshell")
+
+ "b" '(:ignore t :which-key "buffer")
+ "bb" '(counsel-switch-buffer :which-key "switch")
+ "bk" '(kill-buffer :which-key "kill")
+
+ "." '(counsel-find-file :which-key "file")
+ "/" '(counsel-M-x :which-key "M-x")
+ )
 
 #+end_src
-*** theme
+** Transparency
 #+begin_src emacs-lisp
 
-;(load-theme 'doom-Iosvkem t)
-;(load-theme 'doom-horizon t)
-(load-theme 'doom-outrun-electric t)
-;(load-theme 'doom-dracula t)
-;(load-theme 'doom-palenight t)
-;(load-theme 'doom-challenger-deep t)
+  (set-frame-parameter (selected-frame) 'alpha '(90 . 50))
+  (add-to-list 'default-frame-alist '(alpha . (90 . 50)))
+
+#+end_src
+** Theme
+#+begin_src emacs-lisp
+
+  ;(load-theme 'doom-Iosvkem t)
+  ;(load-theme 'doom-horizon t)
+  (load-theme 'doom-outrun-electric t)
+  ;(load-theme 'doom-dracula t)
+  ;(load-theme 'doom-palenight t)
+  ;(load-theme 'doom-challenger-deep t)
 
 #+end_src
