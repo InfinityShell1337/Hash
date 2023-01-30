@@ -1,4 +1,3 @@
-;; default setup
 (setq inhibit-startup-message t) ; Remove start page
 
 (scroll-bar-mode -1) ; Disable visible scrollbar
@@ -12,7 +11,6 @@
 
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit) ; Make ESC quit prompts
 
-;; package init
 (require 'package)
 
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
@@ -23,14 +21,12 @@
 (unless package-archive-contents
   (package-refresh-contents))
 
-;; Initialize use-package on non-Linux platforms
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
 
 (require 'use-package)
 (setq use-package-always-ensure t)
 
-;; Line numbers
 (column-number-mode)
 (global-display-line-numbers-mode t)
 
@@ -42,13 +38,10 @@
                 eshell-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
-;; doom-themes
 (use-package doom-themes)
 
-;; all-the-icons
 (use-package all-the-icons)
 
-;; Ivy for completions
 (use-package ivy
   :diminish
   :bind (("C-s" . swiper)
@@ -67,7 +60,6 @@
   :config
   (ivy-mode 1))
 
-;; Counsel for cool stuff
 (use-package counsel
   :bind (:map minibuffer-local-map
          ("C-r" . 'counsel-minibuffer-history)
@@ -80,22 +72,18 @@
 	  (setq ivy-initial-inputs-alist nil) ; Don't start searches with ^
 	  )
 
-;; ivy-rich
 (use-package ivy-rich
   :after ivy
   :init (ivy-rich-mode 1))
 
-;; rainbow-delimiters
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
 
-;; doom-modeline
 (use-package doom-modeline
   :ensure t
   :init (doom-modeline-mode 1)
   :custom ((doom-modeline-height 30)))
 
-;; helpful
 (use-package helpful
   :commands (helpful-callable helpful-variable helpful-command helpful-key)
   :custom
@@ -107,7 +95,6 @@
   ([remap describe-variable] . counsel-describe-variable)
   ([remap describe-key] . helpful-key))
 
-;; General
 (use-package general
   :config (general-evil-setup t))
 
@@ -116,7 +103,6 @@
   :prefix "SPC"
   :global-prefix "C-M-<tab>")
 
-;; Which key
 (use-package which-key
   :defer 0
   :diminish which-key-mode
@@ -124,7 +110,6 @@
   (which-key-mode)
   (setq which-key-idle-delay 1))
 
-;; Evil
 (use-package evil
   :init
   (setq evil-want-integration t)
@@ -142,17 +127,14 @@
   (evil-set-initial-state 'messages-buffer-mode 'normal)
   (evil-set-initial-state 'dashboard-mode 'normal))
 
-;; Evil collection for better evil
 (use-package evil-collection
   :after evil
   :config
   (evil-collection-init))
 
-;; hydra
 (use-package hydra
   :defer t)
 
-;; projectile
 (use-package projectile
   :diminish projectile-mode
   :config (projectile-mode)
@@ -165,32 +147,26 @@
     (setq projectile-project-search-path '("~")))
   (setq projectile-switch-project-action #'projectile-dired))
 
-;; counsel-projectile (better ivy integration with projectile)
 (use-package counsel-projectile
   :config (counsel-projectile-mode))
 
-;; magit
 (use-package magit
   :custom
   (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
 
-;; forge (extra for magit)
 (use-package forge)
 
-;; org
 (use-package org
   :hook (org-mode . hash/org-mode-setup)
   :config
   (setq org-ellipsis " ▾"
 	org-hide-emphasis-markers t))
 
-;; org-bullets
 (use-package org-bullets
   :hook (org-mode . org-bullets-mode)
   :custom
   (org-bullets-bullet-list '("◉" "○" "●" "○" "●" "○" "●")))
 
-;; Make org buffers in middle of screen
 (use-package visual-fill-column
   :defer t
   :hook (org-mode . hash/org-mode-visual-fill))
@@ -200,18 +176,15 @@
 	visual-fill-column-center-text t)
   (visual-fill-column-mode 1))
 
-;; Org templates
 (require 'org-tempo)
 
-(add-to-list 'org-structure-template-alist '("sh" . "source shell"))
-(add-to-list 'org-structure-template-alist '("el" . "source emacs-lisp"))
-(add-to-list 'org-structure-template-alist '("py" . "source python"))
-(add-to-list 'org-structure-template-alist '("js" . "source javascript"))
+(add-to-list 'org-structure-template-alist '("sh" . "src shell"))
+(add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
+(add-to-list 'org-structure-template-alist '("py" . "src python"))
+(add-to-list 'org-structure-template-alist '("js" . "src javascript"))
 
-;; Disable files~
 (setq make-backup-files nil)
 
-;; Keybindings
 (hash/leader-keys
  "c" '(:ignore t :which-key "config")
  "ct" '(counsel-load-theme :which-key "theme")
@@ -227,7 +200,6 @@
  "/" '(counsel-M-x :which-key "M-x")
  )
 
-;; Org Setup
 (defun hash/org-mode-setup ()
   (org-indent-mode)
   (variable-pitch-mode 1)
@@ -235,7 +207,6 @@
   (visual-line-mode 1)
   (setq evil-auto-indent nil))
 
-;; Org look nice
 (require 'org-indent)
 (font-lock-add-keywords 'org-mode
 			'(("^ *\\([-]\\) "
@@ -251,36 +222,16 @@
                 (org-level-8 . 1.1)))
   (set-face-attribute (car face) nil :weight 'regular :height (cdr face)))
 
-;; general keybindings
 (general-define-key
  "C-M-j" 'counsel-switch-buffer
  "C-x b" 'counsel-switch-buffer)
 
-;; Transparency
 (set-frame-parameter (selected-frame) 'alpha '(90 . 50))
 (add-to-list 'default-frame-alist '(alpha . (90 . 50)))
 
-;; theme
 ;(load-theme 'doom-Iosvkem t)
 ;(load-theme 'doom-horizon t)
 (load-theme 'doom-outrun-electric t)
 ;(load-theme 'doom-dracula t)
 ;(load-theme 'doom-palenight t)
 ;(load-theme 'doom-challenger-deep t)
-
-;; do not touch
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   '("5f128efd37c6a87cd4ad8e8b7f2afaba425425524a68133ac0efd87291d05874" "944d52450c57b7cbba08f9b3d08095eb7a5541b0ecfb3a0a9ecd4a18f3c28948" "7a424478cb77a96af2c0f50cfb4e2a88647b3ccca225f8c650ed45b7f50d9525" "6945dadc749ac5cbd47012cad836f92aea9ebec9f504d32fe89a956260773ca4" default))
- '(package-selected-packages
-   '(visual-fill-column visual-fill-mode org-bullets forge evil-magi evil-magit magit counsel-projectile projectile evil-collection undo-tree evil general helpful ivy-rich which-key rainbow-delimiters doom-themes all-the-icons doom-modeline counsel ivy use-package)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
