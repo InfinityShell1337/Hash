@@ -85,6 +85,10 @@
   :after ivy
   :init (ivy-rich-mode 1))
 
+;; rainbow-delimiters
+(use-package rainbow-delimiters
+  :hook (prog-mode . rainbow-delimiters-mode))
+
 ;; doom-modeline
 (use-package doom-modeline
   :ensure t
@@ -174,7 +178,35 @@
 (use-package forge)
 
 ;; org
-(use-package org)
+(use-package org
+  :hook (org-mode . hash/org-mode-setup)
+  :config
+  (setq org-ellipsis " ▾"
+	org-hide-emphasis-markers t))
+
+;; org-bullets
+(use-package org-bullets
+  :hook (org-mode . org-bullets-mode)
+  :custom
+  (org-bullets-bullet-list '("◉" "○" "●" "○" "●" "○" "●")))
+
+;; Make org buffers in middle of screen
+(use-package visual-fill-column
+  :defer t
+  :hook (org-mode . hash/org-mode-visual-fill))
+
+(defun hash/org-mode-visual-fill ()
+  (setq visual-fill-column-width 100
+	visual-fill-column-center-text t)
+  (visual-fill-column-mode 1))
+
+;; Org templates
+(require 'org-tempo)
+
+(add-to-list 'org-structure-template-alist '("sh" . "source shell"))
+(add-to-list 'org-structure-template-alist '("el" . "source emacs-lisp"))
+(add-to-list 'org-structure-template-alist '("py" . "source python"))
+(add-to-list 'org-structure-template-alist '("js" . "source javascript"))
 
 ;; Disable files~
 (setq make-backup-files nil)
@@ -195,6 +227,31 @@
  "/" '(counsel-M-x :which-key "M-x")
  )
 
+;; Org Setup
+(defun hash/org-mode-setup ()
+  (org-indent-mode)
+  (variable-pitch-mode 1)
+  (auto-fill-mode 0)
+  (visual-line-mode 1)
+  (setq evil-auto-indent nil))
+
+;; Org look nice
+(require 'org-indent)
+(font-lock-add-keywords 'org-mode
+			'(("^ *\\([-]\\) "
+			   (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+
+(dolist (face '((org-level-1 . 1.2)
+		(org-level-2 . 1.1)
+                (org-level-3 . 1.05)
+                (org-level-4 . 1.0)
+                (org-level-5 . 1.1)
+                (org-level-6 . 1.1)
+                (org-level-7 . 1.1)
+                (org-level-8 . 1.1)))
+  (set-face-attribute (car face) nil :weight 'regular :height (cdr face)))
+
+;; general keybindings
 (general-define-key
  "C-M-j" 'counsel-switch-buffer
  "C-x b" 'counsel-switch-buffer)
@@ -220,7 +277,7 @@
  '(custom-safe-themes
    '("5f128efd37c6a87cd4ad8e8b7f2afaba425425524a68133ac0efd87291d05874" "944d52450c57b7cbba08f9b3d08095eb7a5541b0ecfb3a0a9ecd4a18f3c28948" "7a424478cb77a96af2c0f50cfb4e2a88647b3ccca225f8c650ed45b7f50d9525" "6945dadc749ac5cbd47012cad836f92aea9ebec9f504d32fe89a956260773ca4" default))
  '(package-selected-packages
-   '(forge evil-magi evil-magit magit counsel-projectile projectile evil-collection undo-tree evil general helpful ivy-rich which-key rainbow-delimiters doom-themes all-the-icons doom-modeline counsel ivy use-package)))
+   '(visual-fill-column visual-fill-mode org-bullets forge evil-magi evil-magit magit counsel-projectile projectile evil-collection undo-tree evil general helpful ivy-rich which-key rainbow-delimiters doom-themes all-the-icons doom-modeline counsel ivy use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -1,4 +1,9 @@
-;; default setup
+#+TITLE: Emacs Configuration
+#+PROPERTY: header-args:emacs-lisp :tangle ./init.el :mkdirp yes
+* Hash
+** Default Setup
+#+begin_source emacs-lisp
+
 (setq inhibit-startup-message t) ; Remove start page
 
 (scroll-bar-mode -1) ; Disable visible scrollbar
@@ -12,7 +17,11 @@
 
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit) ; Make ESC quit prompts
 
-;; package init
+#+end_source
+** Packages
+*** Init Packages
+#+begin_source emacs-lisp
+
 (require 'package)
 
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
@@ -23,14 +32,20 @@
 (unless package-archive-contents
   (package-refresh-contents))
 
-;; Initialize use-package on non-Linux platforms
+#+end_source
+*** Initialize use-package on non-Linux platforms
+#+begin_source emacs-lisp
+
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
 
 (require 'use-package)
 (setq use-package-always-ensure t)
 
-;; Line numbers
+#+end_source
+*** Line numbers
+#+begin_source emacs-lisp
+
 (column-number-mode)
 (global-display-line-numbers-mode t)
 
@@ -42,13 +57,22 @@
                 eshell-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
-;; doom-themes
+#+end_source
+*** doom-themes
+#+begin_source emacs-lisp
+
 (use-package doom-themes)
 
-;; all-the-icons
+#+end_source
+*** all-the-icons
+#+begin_source emacs-lisp
+
 (use-package all-the-icons)
 
-;; Ivy for completions
+#+end_source
+*** Ivy for completions
+#+begin_source emacs-lisp
+
 (use-package ivy
   :diminish
   :bind (("C-s" . swiper)
@@ -67,7 +91,10 @@
   :config
   (ivy-mode 1))
 
-;; Counsel for cool stuff
+#+end_source
+*** Counsel for cool stuff
+#+begin_source emacs-lisp
+
 (use-package counsel
   :bind (:map minibuffer-local-map
          ("C-r" . 'counsel-minibuffer-history)
@@ -80,18 +107,34 @@
 	  (setq ivy-initial-inputs-alist nil) ; Don't start searches with ^
 	  )
 
-;; ivy-rich
+#+end_source
+*** ivy-rich
+#+begin_source emacs-lisp
+
 (use-package ivy-rich
   :after ivy
   :init (ivy-rich-mode 1))
 
-;; doom-modeline
+#+end_source
+*** rainbow-delimiters
+#+begin_source emacs-lisp
+
+(use-package rainbow-delimiters
+  :hook (prog-mode . rainbow-delimiters-mode))
+
+#+end_source
+*** doom-modeline
+#+begin_source emacs-lisp
+
 (use-package doom-modeline
   :ensure t
   :init (doom-modeline-mode 1)
   :custom ((doom-modeline-height 30)))
 
-;; helpful
+#+end_source
+*** helpful
+#+begin_source emacs-lisp
+
 (use-package helpful
   :commands (helpful-callable helpful-variable helpful-command helpful-key)
   :custom
@@ -103,7 +146,10 @@
   ([remap describe-variable] . counsel-describe-variable)
   ([remap describe-key] . helpful-key))
 
-;; General
+#+end_source
+*** General
+#+begin_source emacs-lisp
+
 (use-package general
   :config (general-evil-setup t))
 
@@ -112,7 +158,10 @@
   :prefix "SPC"
   :global-prefix "C-M-<tab>")
 
-;; Which key
+#+end_source
+*** Which key
+#+begin_source emacs-lisp
+
 (use-package which-key
   :defer 0
   :diminish which-key-mode
@@ -120,7 +169,10 @@
   (which-key-mode)
   (setq which-key-idle-delay 1))
 
-;; Evil
+#+end_source
+*** Evil
+#+begin_source emacs-lisp
+
 (use-package evil
   :init
   (setq evil-want-integration t)
@@ -138,17 +190,26 @@
   (evil-set-initial-state 'messages-buffer-mode 'normal)
   (evil-set-initial-state 'dashboard-mode 'normal))
 
-;; Evil collection for better evil
+#+end_source
+*** Evil collection for better evil
+#+begin_source emacs-lisp
+
 (use-package evil-collection
   :after evil
   :config
   (evil-collection-init))
 
-;; hydra
+#+end_source
+*** hydra
+#+begin_source emacs-lisp
+
 (use-package hydra
   :defer t)
 
-;; projectile
+#+end_source
+*** projectile
+#+begin_source emacs-lisp
+
 (use-package projectile
   :diminish projectile-mode
   :config (projectile-mode)
@@ -161,25 +222,81 @@
     (setq projectile-project-search-path '("~")))
   (setq projectile-switch-project-action #'projectile-dired))
 
-;; counsel-projectile (better ivy integration with projectile)
+#+end_source
+*** counsel-projectile (better ivy integration with projectile)
+#+begin_source emacs-lisp
+
 (use-package counsel-projectile
   :config (counsel-projectile-mode))
 
-;; magit
+#+end_source
+*** magit
+#+begin_source emacs-lisp
+
 (use-package magit
   :custom
   (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
 
-;; forge (extra for magit)
+#+end_source
+*** forge (extra for magit)
+#+begin_source emacs-lisp
+
 (use-package forge)
 
-;; org
-(use-package org)
+#+end_source
+*** org
+#+begin_source emacs-lisp
 
-;; Disable files~
+(use-package org
+  :hook (org-mode . hash/org-mode-setup)
+  :config
+  (setq org-ellipsis " ▾"
+	org-hide-emphasis-markers t))
+
+#+end_source
+*** org-bullets
+#+begin_source emacs-lisp
+
+(use-package org-bullets
+  :hook (org-mode . org-bullets-mode)
+  :custom
+  (org-bullets-bullet-list '("◉" "○" "●" "○" "●" "○" "●")))
+
+#+end_source
+*** Make org buffers in middle of screen
+#+begin_source emacs-lisp
+
+(use-package visual-fill-column
+  :defer t
+  :hook (org-mode . hash/org-mode-visual-fill))
+
+(defun hash/org-mode-visual-fill ()
+  (setq visual-fill-column-width 100
+	visual-fill-column-center-text t)
+  (visual-fill-column-mode 1))
+
+#+end_source
+** Configuration
+*** Org templates
+#+begin_source emacs-lisp
+
+(require 'org-tempo)
+
+(add-to-list 'org-structure-template-alist '("sh" . "source shell"))
+(add-to-list 'org-structure-template-alist '("el" . "source emacs-lisp"))
+(add-to-list 'org-structure-template-alist '("py" . "source python"))
+(add-to-list 'org-structure-template-alist '("js" . "source javascript"))
+
+#+end_source
+*** Disable files~
+#+begin_source emacs-lisp
+
 (setq make-backup-files nil)
 
-;; Keybindings
+#+end_source
+*** Keybindings
+#+begin_source emacs-lisp
+
 (hash/leader-keys
  "c" '(:ignore t :which-key "config")
  "ct" '(counsel-load-theme :which-key "theme")
@@ -195,15 +312,55 @@
  "/" '(counsel-M-x :which-key "M-x")
  )
 
+#+end_source
+*** Org Setup
+#+begin_source emacs-lisp
+
+(defun hash/org-mode-setup ()
+  (org-indent-mode)
+  (variable-pitch-mode 1)
+  (auto-fill-mode 0)
+  (visual-line-mode 1)
+  (setq evil-auto-indent nil))
+
+#+end_source
+*** Org look nice
+#+begin_source emacs-lisp
+
+(require 'org-indent)
+(font-lock-add-keywords 'org-mode
+			'(("^ *\\([-]\\) "
+			   (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+
+(dolist (face '((org-level-1 . 1.2)
+		(org-level-2 . 1.1)
+                (org-level-3 . 1.05)
+                (org-level-4 . 1.0)
+                (org-level-5 . 1.1)
+                (org-level-6 . 1.1)
+                (org-level-7 . 1.1)
+                (org-level-8 . 1.1)))
+  (set-face-attribute (car face) nil :weight 'regular :height (cdr face)))
+
+#+end_source
+*** general keybindings
+#+begin_source emacs-lisp
+
 (general-define-key
  "C-M-j" 'counsel-switch-buffer
  "C-x b" 'counsel-switch-buffer)
 
-;; Transparency
+#+end_source
+*** Transparency
+#+begin_source emacs-lisp
+
 (set-frame-parameter (selected-frame) 'alpha '(90 . 50))
 (add-to-list 'default-frame-alist '(alpha . (90 . 50)))
 
-;; theme
+#+end_source
+*** theme
+#+begin_source emacs-lisp
+
 ;(load-theme 'doom-Iosvkem t)
 ;(load-theme 'doom-horizon t)
 (load-theme 'doom-outrun-electric t)
@@ -211,19 +368,4 @@
 ;(load-theme 'doom-palenight t)
 ;(load-theme 'doom-challenger-deep t)
 
-;; do not touch
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   '("5f128efd37c6a87cd4ad8e8b7f2afaba425425524a68133ac0efd87291d05874" "944d52450c57b7cbba08f9b3d08095eb7a5541b0ecfb3a0a9ecd4a18f3c28948" "7a424478cb77a96af2c0f50cfb4e2a88647b3ccca225f8c650ed45b7f50d9525" "6945dadc749ac5cbd47012cad836f92aea9ebec9f504d32fe89a956260773ca4" default))
- '(package-selected-packages
-   '(forge evil-magi evil-magit magit counsel-projectile projectile evil-collection undo-tree evil general helpful ivy-rich which-key rainbow-delimiters doom-themes all-the-icons doom-modeline counsel ivy use-package)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+#+end_source
