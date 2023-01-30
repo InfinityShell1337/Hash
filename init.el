@@ -170,6 +170,12 @@
   :custom
   (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
 
+;; forge (extra for magit)
+(use-package forge)
+
+;; org
+(use-package org)
+
 ;; Disable files~
 (setq make-backup-files nil)
 
@@ -214,7 +220,7 @@
  '(custom-safe-themes
    '("5f128efd37c6a87cd4ad8e8b7f2afaba425425524a68133ac0efd87291d05874" "944d52450c57b7cbba08f9b3d08095eb7a5541b0ecfb3a0a9ecd4a18f3c28948" "7a424478cb77a96af2c0f50cfb4e2a88647b3ccca225f8c650ed45b7f50d9525" "6945dadc749ac5cbd47012cad836f92aea9ebec9f504d32fe89a956260773ca4" default))
  '(package-selected-packages
-   '(evil-magi evil-magit magit counsel-projectile projectile evil-collection undo-tree evil general helpful ivy-rich which-key rainbow-delimiters doom-themes all-the-icons doom-modeline counsel ivy use-package)))
+   '(forge evil-magi evil-magit magit counsel-projectile projectile evil-collection undo-tree evil general helpful ivy-rich which-key rainbow-delimiters doom-themes all-the-icons doom-modeline counsel ivy use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
