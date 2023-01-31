@@ -1,5 +1,6 @@
-#+TITLE: Emacs Configuration
+#+TITLE: Infinity Configuration
 #+PROPERTY: header-args:emacs-lisp :tangle ./init.el :mkdirp yes
+
 * Hash
 ** Default Setup
 #+begin_src emacs-lisp
@@ -284,7 +285,7 @@
   :hook (org-mode . hash/org-mode-visual-fill))
 
 (defun hash/org-mode-visual-fill ()
-  (setq visual-fill-column-width 200
+  (setq visual-fill-column-width 150
 	visual-fill-column-center-text t)
   (visual-fill-column-mode 1))
 
@@ -304,7 +305,7 @@
 #+begin_src emacs-lisp
   (defun hash/org-babel-tangle-config ()
     (when (string-equal (buffer-file-name)
-                         (expand-file-name "~/.emacs.d/Emacs.org"))
+                         (expand-file-name "~/.emacs.d/Configuration.org"))
       (let ((org-confirm-babel-evaluate nil))
         (org-babel-tangle))))
 
@@ -383,3 +384,14 @@
   ;(load-theme 'doom-challenger-deep t)
 
 #+end_src
+
+* EXWM
+** Desktop File
+#+begin_src python :tangle ./exwm/EXWM.desktop
+[Desktop Entry]
+Name=EXWM
+Comment=Emacs X Window Manager
+Exec=emacs -fs
+Type=Application
+#+end_src
+* Applications

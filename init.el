@@ -176,7 +176,7 @@
   :hook (org-mode . hash/org-mode-visual-fill))
 
 (defun hash/org-mode-visual-fill ()
-  (setq visual-fill-column-width 200
+  (setq visual-fill-column-width 150
 	visual-fill-column-center-text t)
   (visual-fill-column-mode 1))
 
@@ -189,7 +189,7 @@
 
 (defun hash/org-babel-tangle-config ()
   (when (string-equal (buffer-file-name)
-                       (expand-file-name "~/.emacs.d/Emacs.org"))
+                       (expand-file-name "~/.emacs.d/Configuration.org"))
     (let ((org-confirm-babel-evaluate nil))
       (org-babel-tangle))))
 
