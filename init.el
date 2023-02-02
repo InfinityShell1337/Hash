@@ -40,7 +40,41 @@
 
 (use-package doom-themes)
 
+(use-package auto-package-update
+  :custom
+  (auto-package-update-interval 7)
+  (auto-package-update-prompt-before-update t)
+  :config
+  (auto-package-update-maybe)
+  (auto-package-update-at-time "22:00"))
+
 (use-package all-the-icons)
+
+(use-package term)
+
+(defun hash/configure-eshell ()
+  ;; Save command history when commands are entered
+  (add-hook 'eshell-pre-command-hook 'eshell-save-some-history)
+
+  ;; Truncate buffer for performance
+  (add-to-list 'eshell-output-filter-functions 'eshell-truncate-buffer)
+
+  ;; Bind some useful keys for evil-mode
+  (evil-define-key '(normal insert visual) eshell-mode-map (kbd "C-r") 'counsel-esh-history)
+  (evil-define-key '(normal insert visual) eshell-mode-map (kbd "<home>") 'eshell-bol)
+  (evil-normalize-keymaps)
+
+  (setq eshell-history-size         10000
+        eshell-buffer-maximum-lines 10000
+        eshell-hist-ignoredups t
+        eshell-scroll-to-bottom-on-input t))
+
+(use-package eshell
+  :hook (eshell-first-time-mode . hash/configure-eshell))
+
+(use-package eshell-git-prompt
+  :config
+  (eshell-git-prompt-use-theme 'multiline2))
 
 (use-package ivy
   :diminish
@@ -139,6 +173,23 @@
 (use-package hydra
   :defer t)
 
+(use-package dired
+  :ensure nil
+  :commands (dired dired-jump)
+  :bind (("C-x C-j" . dired-jump))
+  :custom ((dired-listing-switches "-agho --group-directories-first"))
+  :config
+  (evil-collection-define-key 'normal 'dired-mode-map
+    "h" 'dired-single-up-directory
+    "l" 'dired-single-buffer
+    ))
+
+(use-package dired-single)
+
+(use-package all-the-icons-dired
+  :hook (dired-mode . all-the-icons-dired-mode)
+  )
+
 (use-package projectile
   :diminish projectile-mode
   :config (projectile-mode)
@@ -224,7 +275,8 @@
  "ct" '(counsel-load-theme :which-key "theme")
 
  "r" '(:ignore t :which-key "run")
- "re" '(eshell :which-key "eshell")
+"re" '(ielm :which-key "elisp-shell")
+"rs" '(ansi-term :which-key "term")
 
  "b" '(:ignore t :which-key "buffer")
  "bb" '(counsel-switch-buffer :which-key "switch")
@@ -232,6 +284,7 @@
 
  "." '(counsel-find-file :which-key "file")
  "/" '(counsel-M-x :which-key "M-x")
+ "SPC" '(eshell :which-key "eshell")
  )
 
 (set-frame-parameter (selected-frame) 'alpha '(90 . 50))
@@ -239,7 +292,9 @@
 
 ;(load-theme 'doom-Iosvkem t)
 ;(load-theme 'doom-horizon t)
-(load-theme 'doom-outrun-electric t)
+;(load-theme 'doom-outrun-electric t)
 ;(load-theme 'doom-dracula t)
-;(load-theme 'doom-palenight t)
+(load-theme 'doom-palenight t)
 ;(load-theme 'doom-challenger-deep t)
+
+

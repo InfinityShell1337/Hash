@@ -1,42 +1,5 @@
 c
-cd
-q
-ls
-c
-alias
-c
-cdd
-c
-gut
-c
-giit
-c
-alias ff 'find-file $1'
-alias d 'dired $1'
-alias fd 'find-dired $PWD ""'
-ls
-cd eshell/
-ls
-l
-la
-ls -la
-ff alias 
-c
-cd
-popd
-cd .config/emacs/
-c
-ls
-c
-less
-less init.el 
-c
-ls
-c
-hgfhdj
-c
 (format eshell-prompt-function)
-q
 ls
 cd .config/emacs/
 ls
@@ -46,9 +9,7 @@ ff init.el
 ls
 (autoload 'epe-theme-lambda "eshell-prompt-extras")
 (autoload 'epe-theme-dakrone "eshell-prompt-extras")
-q
 exit
-q
 ls
 cd .config/emacs/
 ld
@@ -61,10 +22,7 @@ ls
 c
 ls
 echo *
-q
 ls
-q
-q
 ls
 c
 ls -la
@@ -108,9 +66,7 @@ c
 c
 whoami
 c
-q
 ls
-q
 ls
 c
 git status
@@ -124,5 +80,49 @@ git pull
 c
 ls
 c
+ls
+ls -la
+htop
+btop
+top
+c
+ls
+cd .emacs.d/
+c
+ls
+whoami
+c
+use-theme
+use-theme multiline
+ls
+use-theme robbyrussel
+use-theme robbyrussell
+x
+c
+ls
+use-theme
+use-theme multiline2
+ls
+c
+whoami
+ls -la
+ls
+cd .emacs.d/
+c
+ls
+..
+ls
+c
+c
+ls
+whoami 
+ls -la
+c
+ls
+ls
+ls
+c
+ls
+q
 ls
 q

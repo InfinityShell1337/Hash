@@ -5,18 +5,18 @@
 ** Default Setup
 #+begin_src emacs-lisp
 
-(setq inhibit-startup-message t) ; Remove start page
+  (setq inhibit-startup-message t) ; Remove start page
 
-(scroll-bar-mode -1) ; Disable visible scrollbar
-(tool-bar-mode -1) ; Disable toolbar
-(tooltip-mode -1) ; Disable tooltips
-(set-fringe-mode 10) ; Give some breathing room
+  (scroll-bar-mode -1) ; Disable visible scrollbar
+  (tool-bar-mode -1) ; Disable toolbar
+  (tooltip-mode -1) ; Disable tooltips
+  (set-fringe-mode 10) ; Give some breathing room
 
-(menu-bar-mode -1) ; Disable the menu bar
+  (menu-bar-mode -1) ; Disable the menu bar
 
-(setq visible-bell t) ; Visible bell
+  (setq visible-bell t) ; Visible bell
 
-(global-set-key (kbd "<escape>") 'keyboard-escape-quit) ; Make ESC quit prompts
+  (global-set-key (kbd "<escape>") 'keyboard-escape-quit) ; Make ESC quit prompts
 
 #+end_src
 ** Initialize Packages
@@ -65,11 +65,54 @@
 (use-package doom-themes)
 
 #+end_src
+** Auto Update Packages
+#+begin_src emacs-lisp
+  (use-package auto-package-update
+    :custom
+    (auto-package-update-interval 7)
+    (auto-package-update-prompt-before-update t)
+    :config
+    (auto-package-update-maybe)
+    (auto-package-update-at-time "22:00"))
+#+end_src
 ** all-the-icons
 #+begin_src emacs-lisp
 
 (use-package all-the-icons)
 
+#+end_src
+** term
+#+begin_src emacs-lisp
+(use-package term)
+#+end_src
+** eshell
+*** Main
+#+begin_src emacs-lisp
+(defun hash/configure-eshell ()
+  ;; Save command history when commands are entered
+  (add-hook 'eshell-pre-command-hook 'eshell-save-some-history)
+
+  ;; Truncate buffer for performance
+  (add-to-list 'eshell-output-filter-functions 'eshell-truncate-buffer)
+
+  ;; Bind some useful keys for evil-mode
+  (evil-define-key '(normal insert visual) eshell-mode-map (kbd "C-r") 'counsel-esh-history)
+  (evil-define-key '(normal insert visual) eshell-mode-map (kbd "<home>") 'eshell-bol)
+  (evil-normalize-keymaps)
+
+  (setq eshell-history-size         10000
+        eshell-buffer-maximum-lines 10000
+        eshell-hist-ignoredups t
+        eshell-scroll-to-bottom-on-input t))
+
+(use-package eshell
+  :hook (eshell-first-time-mode . hash/configure-eshell))
+#+end_src
+*** Git prompt
+#+begin_src emacs-lisp
+    (use-package eshell-git-prompt
+      :config
+      (eshell-git-prompt-use-theme 'multiline2))
 #+end_src
 ** Ivy for completions
 #+begin_src emacs-lisp
@@ -218,6 +261,30 @@
   :defer t)
 
 #+end_src
+** dired
+*** Main
+#+begin_src emacs-lisp
+(use-package dired
+  :ensure nil
+  :commands (dired dired-jump)
+  :bind (("C-x C-j" . dired-jump))
+  :custom ((dired-listing-switches "-agho --group-directories-first"))
+  :config
+  (evil-collection-define-key 'normal 'dired-mode-map
+    "h" 'dired-single-up-directory
+    "l" 'dired-single-buffer
+    ))
+#+end_src
+*** dired-single
+#+begin_src emacs-lisp
+(use-package dired-single)
+#+end_src
+*** File icons
+#+begin_src emacs-lisp
+(use-package all-the-icons-dired
+  :hook (dired-mode . all-the-icons-dired-mode)
+  )
+#+end_src
 ** projectile
 *** Main
 #+begin_src emacs-lisp
@@ -355,7 +422,8 @@
  "ct" '(counsel-load-theme :which-key "theme")
 
  "r" '(:ignore t :which-key "run")
- "re" '(eshell :which-key "eshell")
+"re" '(ielm :which-key "elisp-shell")
+"rs" '(ansi-term :which-key "term")
 
  "b" '(:ignore t :which-key "buffer")
  "bb" '(counsel-switch-buffer :which-key "switch")
@@ -363,6 +431,7 @@
 
  "." '(counsel-find-file :which-key "file")
  "/" '(counsel-M-x :which-key "M-x")
+ "SPC" '(eshell :which-key "eshell")
  )
 
 #+end_src
@@ -378,20 +447,32 @@
 
   ;(load-theme 'doom-Iosvkem t)
   ;(load-theme 'doom-horizon t)
-  (load-theme 'doom-outrun-electric t)
+  ;(load-theme 'doom-outrun-electric t)
   ;(load-theme 'doom-dracula t)
-  ;(load-theme 'doom-palenight t)
+  (load-theme 'doom-palenight t)
   ;(load-theme 'doom-challenger-deep t)
 
 #+end_src
 
 * EXWM
+** Config
+#+begin_src emacs-lisp
+
+#+end_src
 ** Desktop File
 #+begin_src python :tangle ./exwm/EXWM.desktop
 [Desktop Entry]
 Name=EXWM
 Comment=Emacs X Window Manager
-Exec=emacs -fs
+Exec=sh $HOME/.emacs.d/Start-Emacs.sh
 Type=Application
+#+end_src
+** Start File
+#+begin_src shell :tangle ./Start-Emacs.sh
+picom -fb &
+nitrogen --restore &
+
+emacs -fs
+
 #+end_src
 * Applications

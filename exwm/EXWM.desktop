@@ -1,5 +1,5 @@
 [Desktop Entry]
 Name=EXWM
 Comment=Emacs X Window Manager
-Exec=emacs -fs
+Exec=sh $HOME/.emacs.d/Start-Emacs.sh
 Type=Application
