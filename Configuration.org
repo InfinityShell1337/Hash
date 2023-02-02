@@ -1,8 +1,7 @@
 #+TITLE: Infinity Configuration
 #+PROPERTY: header-args:emacs-lisp :tangle ./init.el :mkdirp yes
 
-* Hash
-** Default Setup
+* Default Setup
 #+begin_src emacs-lisp
 
   (setq inhibit-startup-message t) ; Remove start page
@@ -19,8 +18,8 @@
   (global-set-key (kbd "<escape>") 'keyboard-escape-quit) ; Make ESC quit prompts
 
 #+end_src
-** Initialize Packages
-*** Init Packages
+* Initialize Packages
+** Init Packages
 #+begin_src emacs-lisp
 
 (require 'package)
@@ -34,7 +33,7 @@
   (package-refresh-contents))
 
 #+end_src
-*** Initialize use-package on non-Linux platforms
+** Initialize use-package on non-Linux platforms
 #+begin_src emacs-lisp
 
 (unless (package-installed-p 'use-package)
@@ -44,7 +43,7 @@
 (setq use-package-always-ensure t)
 
 #+end_src
-** Line numbers
+* Line numbers
 #+begin_src emacs-lisp
 
 (column-number-mode)
@@ -59,13 +58,13 @@
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 #+end_src
-** doom-themes
+* doom-themes
 #+begin_src emacs-lisp
 
 (use-package doom-themes)
 
 #+end_src
-** Auto Update Packages
+* Auto Update Packages
 #+begin_src emacs-lisp
   (use-package auto-package-update
     :custom
@@ -75,18 +74,18 @@
     (auto-package-update-maybe)
     (auto-package-update-at-time "22:00"))
 #+end_src
-** all-the-icons
+* all-the-icons
 #+begin_src emacs-lisp
 
 (use-package all-the-icons)
 
 #+end_src
-** term
+* term
 #+begin_src emacs-lisp
 (use-package term)
 #+end_src
-** eshell
-*** Main
+* eshell
+** Main
 #+begin_src emacs-lisp
 (defun hash/configure-eshell ()
   ;; Save command history when commands are entered
@@ -108,13 +107,13 @@
 (use-package eshell
   :hook (eshell-first-time-mode . hash/configure-eshell))
 #+end_src
-*** Git prompt
+** Git prompt
 #+begin_src emacs-lisp
     (use-package eshell-git-prompt
       :config
       (eshell-git-prompt-use-theme 'multiline2))
 #+end_src
-** Ivy for completions
+* Ivy for completions
 #+begin_src emacs-lisp
 
 (use-package ivy
@@ -136,7 +135,7 @@
   (ivy-mode 1))
 
 #+end_src
-** Counsel for cool stuff
+* Counsel for cool stuff
 #+begin_src emacs-lisp
 
 (use-package counsel
@@ -152,7 +151,7 @@
 	  )
 
 #+end_src
-** ivy-rich
+* ivy-rich
 #+begin_src emacs-lisp
 
 (use-package ivy-rich
@@ -160,14 +159,14 @@
   :init (ivy-rich-mode 1))
 
 #+end_src
-** rainbow-delimiters
+* rainbow-delimiters
 #+begin_src emacs-lisp
 
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
 
 #+end_src
-** doom-modeline
+* doom-modeline
 #+begin_src emacs-lisp
 
 (use-package doom-modeline
@@ -176,7 +175,7 @@
   :custom ((doom-modeline-height 30)))
 
 #+end_src
-** helpful
+* helpful
 #+begin_src emacs-lisp
 
 (use-package helpful
@@ -191,8 +190,8 @@
   ([remap describe-key] . helpful-key))
 
 #+end_src
-** General
-*** Main
+* General
+** Main
 #+begin_src emacs-lisp
 
 (use-package general
@@ -201,10 +200,10 @@
 (general-create-definer hash/leader-keys
   :keymaps '(normal insert visual emacs)
   :prefix "SPC"
-  :global-prefix "C-M-<tab>")
+  :global-prefix "C-SPC")
 
 #+end_src
-*** general keybindings
+** general keybindings
 #+begin_src emacs-lisp
 
 (general-define-key
@@ -212,7 +211,7 @@
  "C-x b" 'counsel-switch-buffer)
 
 #+end_src
-** Which key
+* Which key
 #+begin_src emacs-lisp
 
 (use-package which-key
@@ -223,8 +222,8 @@
   (setq which-key-idle-delay 1))
 
 #+end_src
-** Evil
-*** Main
+* Evil
+** Main
 #+begin_src emacs-lisp
 
 (use-package evil
@@ -245,7 +244,7 @@
   (evil-set-initial-state 'dashboard-mode 'normal))
 
 #+end_src
-*** Evil collection for better evil
+** Evil collection for better evil
 #+begin_src emacs-lisp
 
 (use-package evil-collection
@@ -254,15 +253,15 @@
   (evil-collection-init))
 
 #+end_src
-** hydra
+* hydra
 #+begin_src emacs-lisp
 
 (use-package hydra
   :defer t)
 
 #+end_src
-** dired
-*** Main
+* dired
+** Main
 #+begin_src emacs-lisp
 (use-package dired
   :ensure nil
@@ -275,18 +274,18 @@
     "l" 'dired-single-buffer
     ))
 #+end_src
-*** dired-single
+** dired-single
 #+begin_src emacs-lisp
 (use-package dired-single)
 #+end_src
-*** File icons
+** File icons
 #+begin_src emacs-lisp
 (use-package all-the-icons-dired
   :hook (dired-mode . all-the-icons-dired-mode)
   )
 #+end_src
-** projectile
-*** Main
+* projectile
+** Main
 #+begin_src emacs-lisp
 
 (use-package projectile
@@ -302,15 +301,15 @@
   (setq projectile-switch-project-action #'projectile-dired))
 
 #+end_src
-*** counsel-projectile (better ivy integration with projectile)
+** counsel-projectile (better ivy integration with projectile)
 #+begin_src emacs-lisp
 
 (use-package counsel-projectile
   :config (counsel-projectile-mode))
 
 #+end_src
-** magit
-*** Main
+* magit
+** Main
 #+begin_src emacs-lisp
 
 (use-package magit
@@ -318,14 +317,76 @@
   (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
 
 #+end_src
-*** forge (extra for magit)
+** forge (extra for magit)
 #+begin_src emacs-lisp
 
 (use-package forge)
 
 #+end_src
-** Org
-*** Main
+* EXWM
+#+begin_src emacs-lisp
+  (defun efs/exwm-update-class ()
+    (exwm-workspace-rename-buffer exwm-class-name))
+
+  (use-package exwm
+    :config
+    ;; Set the default number of workspaces
+    (setq exwm-workspace-number 5)
+
+    ;; When window "class" updates, use it to set the buffer name
+    ;; (add-hook 'exwm-update-class-hook #'efs/exwm-update-class)
+
+    ;; These keys should always pass through to Emacs
+    (setq exwm-input-prefix-keys
+      '(?\C-x
+        ?\C-u
+        ?\C-h
+        ?\M-x
+        ?\M-`
+        ?\M-&
+        ?\M-:
+        ?\C-\M-j  ;; Buffer list
+        ?\C-\ ))  ;; Ctrl+Space
+
+    ;; Ctrl+Q will enable the next key to be sent directly
+    (define-key exwm-mode-map [?\C-q] 'exwm-input-send-next-key)
+
+    ;; Set up global key bindings.  These always work, no matter the input state!
+    ;; Keep in mind that changing this list after EXWM initializes has no effect.
+    (setq exwm-input-global-keys
+          `(
+            ;; Reset to line-mode (C-c C-k switches to char-mode via exwm-input-release-keyboard)
+            ([?\s-r] . exwm-reset)
+
+            ;; Move between windows
+            ([s-left] . windmove-left)
+            ([s-right] . windmove-right)
+            ([s-up] . windmove-up)
+            ([s-down] . windmove-down)
+
+            ;; Launch applications via shell command
+            ([?\s-&] . (lambda (command)
+                         (interactive (list (read-shell-command "$ ")))
+                         (start-process-shell-command command nil command)))
+
+            ;; Switch workspace
+            ([?\s-w] . exwm-workspace-switch)
+            ([?\s-`] . (lambda () (interactive) (exwm-workspace-switch-create 0)))
+
+            ;; 's-N': Switch to certain workspace with Super (Win) plus a number key (0 - 9)
+            ,@(mapcar (lambda (i)
+                        `(,(kbd (format "s-%d" i)) .
+                          (lambda ()
+                            (interactive)
+                            (exwm-workspace-switch-create ,i))))
+                      (number-sequence 0 9))))
+
+    (exwm-input-set-key (kbd "s-SPC") 'counsel-linux-app)
+
+    (exwm-enable))
+#+end_src
+* Org
+** Main
 #+begin_src emacs-lisp
 
 (use-package org
@@ -335,7 +396,7 @@
 	org-hide-emphasis-markers t))
 
 #+end_src
-*** org-bullets
+** org-bullets
 #+begin_src emacs-lisp
 
 (use-package org-bullets
@@ -344,7 +405,7 @@
   (org-bullets-bullet-list '("◉" "○" "●" "○" "●" "○" "●")))
 
 #+end_src
-*** Make org buffers in middle of screen
+** Make org buffers in middle of screen
 #+begin_src emacs-lisp
 
 (use-package visual-fill-column
@@ -357,7 +418,7 @@
   (visual-fill-column-mode 1))
 
 #+end_src
-*** Org templates
+** Org templates
 #+begin_src emacs-lisp
 
 (require 'org-tempo)
@@ -368,7 +429,13 @@
 (add-to-list 'org-structure-template-alist '("js" . "src javascript"))
 
 #+end_src
-*** Auto-tangle Configuration files
+** Disable backup files
+#+begin_src emacs-lisp
+
+  (setq make-backup-files nil)
+
+#+end_src
+** Auto-tangle Configuration files
 #+begin_src emacs-lisp
   (defun hash/org-babel-tangle-config ()
     (when (string-equal (buffer-file-name)
@@ -408,13 +475,7 @@
   (set-face-attribute (car face) nil :weight 'regular :height (cdr face)))
 
 #+end_src
-** Disable backup files
-#+begin_src emacs-lisp
-
-  (setq make-backup-files nil)
-
-#+end_src
-** Keybindings
+* Keybindings
 #+begin_src emacs-lisp
 
 (hash/leader-keys
@@ -435,14 +496,14 @@
  )
 
 #+end_src
-** Transparency
+* Transparency
 #+begin_src emacs-lisp
 
   (set-frame-parameter (selected-frame) 'alpha '(90 . 50))
   (add-to-list 'default-frame-alist '(alpha . (90 . 50)))
 
 #+end_src
-** Theme
+* Theme
 #+begin_src emacs-lisp
 
   ;(load-theme 'doom-Iosvkem t)
@@ -454,25 +515,3 @@
 
 #+end_src
 
-* EXWM
-** Config
-#+begin_src emacs-lisp
-
-#+end_src
-** Desktop File
-#+begin_src python :tangle ./exwm/EXWM.desktop
-[Desktop Entry]
-Name=EXWM
-Comment=Emacs X Window Manager
-Exec=sh $HOME/.emacs.d/Start-Emacs.sh
-Type=Application
-#+end_src
-** Start File
-#+begin_src shell :tangle ./Start-Emacs.sh
-picom -fb &
-nitrogen --restore &
-
-emacs -fs
-
-#+end_src
-* Applications
