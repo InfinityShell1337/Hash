@@ -1,4 +1,5 @@
+# Start Programs
 picom -fb &
-nitrogen --restore &
 
-exec dbus-launch --exit-with-session emacs -mm --debug-init
+# Start Emacs
+exec dbus-launch --exit-with-session emacs -mm --debug-init -l ~/.emacs.d/desktop.el

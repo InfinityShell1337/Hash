@@ -1,128 +1,128 @@
 c
-(format eshell-prompt-function)
-ls
-cd .config/emacs/
-ls
+zsh
+c
+cd linux-logos/
 c
 ls
-ff init.el
+ranger
+c
 ls
-(autoload 'epe-theme-lambda "eshell-prompt-extras")
-(autoload 'epe-theme-dakrone "eshell-prompt-extras")
-exit
+dired .
+c
+sl
+c
 ls
-cd .config/emacs/
+cd ..
+ls
+whoami
+ls
+rm Configuration.org
 ld
 ls
-ls
-ls
-cd .config/emacs/
+rm \#Configuration.org\# 
 c
 ls
+ls
+mv Configuration.org Emacs.org
+ls
+ff Emacs.org 
+ls
+touch Desktop.org
+ls
+ff Desktop.org 
 c
 ls
-echo *
-ls
-ls
-c
-ls -la
-cd /
-ls
+cat Start-Emacs.sh 
+cd exwm/
 c
 ls
-cd 
-c
-l
+cd ..
+ls
+cat exwm/EXWM.desktop
 ls
 c
 ls
-cd LINUX-DISTROS/
+cat Desktop.org 
+c
 ls
-l
-ls -la
+cat Start-Emacs.sh 
+cat exwm/EXWM.desktop
+c
+ls
+e Emacs.org 
+e Emacs.org e Emacs.org 
+alias e find-file
+c
+ls
+e Emacs.org 
+alias
+alias e find-file $1
+e Emacs.org 
+alias e "find-file $1"
+alias
+alias e 'find-file $1'
+alias
+c
+e Emacs.org 
+ls
+e Desktop.org 
+ls
+c
+ls
+htop
+top
+htop
+ls
+c
+picom
+c
+killall picom
+c
+man picom
+cd .config/
+ls
+cd
+picom -fb &
+c
+yay -S feh
+c
+cd /usr/share/backgrounds/
+c
+ls
+cd archcraft/
+c
+ls
 cd
 c
-l
-l
-l
-alias l 'ls -la'
-l
-alias la 'ls -a'
-la
+feh --bg-scale /usr/share/backgrounds/archcraft/purple.png
+killall picom
+picom -fb &
+cd /usr/share/backgrounds/
 c
 ls
-ff .emacs.d/eshell/alias
+cd /usr/share/backgrounds/
 ls
-c
-la
-l
-c
-la
-tmux
-ls
-l
-ls
-c
-c
-whoami
+ls archcraft/
 c
 ls
-ls
-c
-git status
-git add -A
-git status
-git commit -m "Updated"
-git push
+cd /usr/share/backgrounds/
 c
 ls
-git pull
+cd archcraft/
+ls
+c
+ls
+yay -S pasystray
+yay -S blueman-applet
+yay -S blueman pavucontrol
 c
 ls
 c
 ls
-ls -la
-htop
-btop
-top
+q
 c
 ls
 cd .emacs.d/
 c
 ls
-whoami
-c
-use-theme
-use-theme multiline
-ls
-use-theme robbyrussel
-use-theme robbyrussell
-x
-c
-ls
-use-theme
-use-theme multiline2
-ls
-c
-whoami
-ls -la
-ls
-cd .emacs.d/
-c
-ls
-..
-ls
-c
-c
-ls
-whoami 
-ls -la
-c
-ls
-ls
-ls
-c
-ls
-q
-ls
-q
+git add -A && git commit -m "Updated" && git push
