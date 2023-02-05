@@ -1,0 +1,6 @@
+emacs
+feh
+picom
+polybar
+pasystray
+pavucontrol

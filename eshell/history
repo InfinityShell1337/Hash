@@ -1,120 +1,63 @@
-c
-zsh
-c
-cd linux-logos/
-c
-ls
-ranger
-c
-ls
-dired .
-c
-sl
-c
-ls
-cd ..
-ls
-whoami
-ls
-rm Configuration.org
-ld
-ls
-rm \#Configuration.org\# 
-c
-ls
-ls
-mv Configuration.org Emacs.org
-ls
-ff Emacs.org 
-ls
-touch Desktop.org
-ls
-ff Desktop.org 
-c
-ls
-cat Start-Emacs.sh 
-cd exwm/
-c
-ls
-cd ..
-ls
-cat exwm/EXWM.desktop
 ls
 c
 ls
-cat Desktop.org 
+c
+l
 c
 ls
-cat Start-Emacs.sh 
-cat exwm/EXWM.desktop
 c
-ls
-e Emacs.org 
-e Emacs.org e Emacs.org 
-alias e find-file
+killall firefox
 c
-ls
-e Emacs.org 
-alias
-alias e find-file $1
-e Emacs.org 
-alias e "find-file $1"
-alias
-alias e 'find-file $1'
-alias
-c
-e Emacs.org 
-ls
-e Desktop.org 
 ls
 c
 ls
-htop
-top
-htop
-ls
-c
-picom
-c
-killall picom
-c
-man picom
-cd .config/
-ls
-cd
-picom -fb &
-c
-yay -S feh
-c
-cd /usr/share/backgrounds/
+killall firefox
 c
 ls
-cd archcraft/
 c
-ls
-cd
-c
-feh --bg-scale /usr/share/backgrounds/archcraft/purple.png
-killall picom
-picom -fb &
-cd /usr/share/backgrounds/
-c
-ls
-cd /usr/share/backgrounds/
-ls
-ls archcraft/
-c
-ls
-cd /usr/share/backgrounds/
-c
-ls
-cd archcraft/
 ls
 c
 ls
-yay -S pasystray
-yay -S blueman-applet
-yay -S blueman pavucontrol
+c
+c
+ls
+c
+la
+c
+ls
+c
+ls
+ly
+c
+c
+ls
+cd .config/polybar
+c
+polybar exwm-panel
+c
+polybar exwm-panel
+rm .config/polybar/config
+c
+polybar exwm-panel
+c
+ls
+cd .emacs.d/
+c
+l
+touch pkglist.txt
+c
+ls
+yay -S dunst
+c
+ls
+yay -S pavucontrol
+c
+notify-send "Test"
+killall dust
+killall dunst
+notify-send "Test"
+dunst
+dunst --help
 c
 ls
 c
@@ -122,7 +65,64 @@ ls
 q
 c
 ls
+c
 cd .emacs.d/
+ls
+cp ~/Projects/hash/.gitignore .
+ls
+c
+ls
+l
+cd eshell/
+ls
+l
+cat lastdir 
+cd ..
+c
+ls
+l
+c
+l
+cat .gitignore 
+c
+ls
+l
+cd exwm/
+ls
+cd ..
+ls
+;
+c
+ls
+l
+cd auto-save-list/
+l
+cd ..
+l
+c
+l
+c
+l
+cat forge-database.sqlite 
+c
+l
+cat projectile-bookmarks.eld 
+cat projects 
+cd transient/
+ls
+l
+cat history.el 
+cd ..
+c
+ls
+l
+cd url/
+ls
+l
+cd ..
+c
+ls
+l
 c
 ls
 git add -A && git commit -m "Updated" && git push

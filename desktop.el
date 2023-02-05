@@ -5,6 +5,21 @@
   (let ((command-parts (split-string command "[ ]+")))
     (apply #'call-process `(,(car command-parts) nil 0 nil ,@(cdr command-parts)))))
 
+(defun hash/exwm-update-title ()
+  (pcase exwm-class-name
+    ("firefox" (exwm-workspace-rename-buffer (format "Firefox: %s" exwm-title)))
+    ))
+
+(defun hash/configure-window-by-class ()
+  (interactive)
+  (message "*%s*" exwm-class-name)
+
+  ;; Send windows to workspaces on creation
+  (pcase exwm-class-name
+    ("firefox" (exwm-workspace-move-window 2))
+    )
+  )
+
 (defun hash/set-wallpaper ()
   (interactive)
   (hash/run-in-background "feh --bg-scale /usr/share/backgrounds/mountain.jpg")
@@ -17,13 +32,15 @@
   ;; Open eshell by default
   ;;(eshell)
 
+  ;; Start polybar
+  (hash/start-panel)
+
   ;; Launch apps that will run in the background
   (hash/run-in-background "nm-applet")
   (hash/run-in-background "pasystray")
-  (hash/run-in-background "blueman-applet")
 
   ;; modeline extra
-  (display-battery-mode 1)
+  ;;(display-battery-mode 1)
   )
 
 (use-package exwm
@@ -34,8 +51,24 @@
   ;; When window "class" updates, use it to set the buffer name
   (add-hook 'exwm-update-class-hook #'hash/exwm-update-class)
 
+  ;; When window title updates, use it to set the buffer name
+  (add-hook 'exwm-update-title-hook #'hash/exwm-update-title)
+
+  ;; Configure Windows when they are created
+  (add-hook 'exwm-manage-finish-hook #'hash/configure-window-by-class)
+
   ;; When EXWM starts up, do some extra configuration
   (add-hook 'exwm-init-hook #'hash/exwm-init-hook)
+
+  ;; Make EXWM windows appear in all buffer lists
+  (setq exwm-workspace-show-all-buffers t)
+
+  ;; Change minibuffer position
+  ;;(setq exwm-workspace-minibuffer-position 'top)
+
+  ;; Turn on auto focus
+  (setq mouse-autoselect-window t
+        focus-follows-mouse t)
 
   ;; These keys should always pass through to Emacs
   (setq exwm-input-prefix-keys
@@ -85,11 +118,12 @@
   (exwm-input-set-key (kbd "s-a") 'counsel-linux-app)
   (exwm-input-set-key (kbd "s-f") 'exwm-layout-toggle-fullscreen)
   (exwm-input-set-key (kbd "s-<return>") 'eshell)
+  (exwm-input-set-key (kbd "s-e") 'exwm-floating-toggle-floating)
 
   ;; System tray
-  (require 'exwm-systemtray)
-  (setq exwm-systemtray-height 16)
-  (exwm-systemtray-enable)
+  ;;(require 'exwm-systemtray)
+  ;;(setq exwm-systemtray-height 16)
+  ;;(exwm-systemtray-enable)
 
   ;; Set Wallpaper
   (hash/set-wallpaper)
@@ -105,3 +139,30 @@
   (desktop-environment-brightness-normal-increment "5%+")
   (desktop-environment-brightness-normal-decrement "5%-")
   )
+
+;; Start the emacs server
+  (server-start)
+
+  (defvar hash/polybar-process nil
+    "Holds the process of the running Polybar instance, if any")
+
+  (defun hash/kill-panel ()
+    (interactive)
+    (when hash/polybar-process
+      (ignore-errors
+        (kill-process hash/polybar-process)))
+    (setq hash/polybar-process nil))
+
+  (defun hash/start-panel ()
+    (interactive)
+    (hash/kill-panel)
+    (setq hash/polybar-process (start-process-shell-command "polybar" nil "polybar exwm-panel")))
+
+(defun hash/send-polybar-hook (module-name hook-index)
+  (start-process-shell-command "polybar-msg" nil (format "polybar-msg hook %s %s" module-name hook-index)))
+
+(defun hash/send-polybar-exwm-workspace ()
+  (hash/send-polybar-hook "exwm-workspace" 1))
+
+;; Update panel indicator when workspace changes
+(add-hook 'exwm-workspace-switch-hook #'hash/send-polybar-exwm-workspace)
