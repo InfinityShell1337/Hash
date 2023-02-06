@@ -448,7 +448,6 @@
 
 #+end_src
 
-
 * Transparency
 #+begin_src emacs-lisp
 
