@@ -345,3 +345,4 @@ label = %temperature-c%
 label-warn = %temperature-c%!
 label-warn-foreground = ${colors.secondary}
 #+end_src
+

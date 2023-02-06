@@ -278,7 +278,7 @@
 
  "r" '(:ignore t :which-key "run")
 "re" '(ielm :which-key "elisp-shell")
-"rs" '(ansi-term :which-key "term")
+"rt" '(ansi-term :which-key "term")
 
  "b" '(:ignore t :which-key "buffer")
  "bb" '(counsel-switch-buffer :which-key "switch")

@@ -1,36 +1,4 @@
 c
-killall firefox
-c
-ls
-c
-ls
-killall firefox
-c
-ls
-c
-ls
-c
-ls
-c
-c
-ls
-c
-la
-c
-ls
-c
-ls
-ly
-c
-c
-ls
-cd .config/polybar
-c
-polybar exwm-panel
-c
-polybar exwm-panel
-rm .config/polybar/config
-c
 polybar exwm-panel
 c
 ls
@@ -126,3 +94,35 @@ x
 c
 ls
 git add -A && git commit -m "Updated" && git push
+c
+dunst
+sudo dunst
+man dust
+man dunst
+notify-send "Test"
+c
+dunst
+dunstctl debug
+d-feet
+c
+cd /usr/share/dbus-1/
+ls
+l
+cd services/
+c
+ls
+ff org.knopwob.dunst.service 
+ls
+c
+ls
+l
+c
+htop
+c
+ls
+gdbus call --session --dest org.freedesktop.DBus --object-path /org/freedesktop/Dbus --method org.freedesktop.DBus.ListNames
+sudo gdbus call --session --dest org.freedesktop.DBus --object-path /org/freedesktop/Dbus --method org.freedesktop.DBus.ListNames
+c
+ls
+cd
+c
