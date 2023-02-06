@@ -63,9 +63,6 @@
   ;; Automatically move EXWM buffer to current workspace when selected
   (setq exwm-layout-show-all-buffers t)
 
-  ;; Make EXWM windows appear in all buffer lists
-  (setq exwm-workspace-show-all-buffers t)
-
   ;; Change minibuffer position
   ;;(setq exwm-workspace-minibuffer-position 'top)
 
@@ -122,6 +119,7 @@
   (exwm-input-set-key (kbd "s-f") 'exwm-layout-toggle-fullscreen)
   (exwm-input-set-key (kbd "s-<return>") 'eshell)
   (exwm-input-set-key (kbd "s-e") 'exwm-floating-toggle-floating)
+  (exwm-input-set-key (kbd "s-j") 'exwm-workspace-switch-to-buffer)
 
   ;; System tray
   ;;(require 'exwm-systemtray)
