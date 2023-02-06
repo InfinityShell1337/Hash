@@ -60,6 +60,9 @@
   ;; When EXWM starts up, do some extra configuration
   (add-hook 'exwm-init-hook #'hash/exwm-init-hook)
 
+  ;; Automatically move EXWM buffer to current workspace when selected
+  (setq exwm-layout-show-all-buffers t)
+
   ;; Make EXWM windows appear in all buffer lists
   (setq exwm-workspace-show-all-buffers t)
 
