@@ -1,1 +1,1 @@
-("~/.emacs.d/" "~/main/" "~/.vim_runtime/" "~/.oh-my-zsh/" "~/.SpaceVim/" "~/Projects/rust/" "~/Projects/hash/")
+("~/.emacs.d/" "~/wallpapers/" "~/.doom.d/")

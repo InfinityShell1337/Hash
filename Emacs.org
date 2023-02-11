@@ -418,22 +418,23 @@
 * Keybindings
 #+begin_src emacs-lisp
 
-(hash/leader-keys
- "c" '(:ignore t :which-key "config")
- "ct" '(counsel-load-theme :which-key "theme")
+  (hash/leader-keys
+   "c" '(:ignore t :which-key "config")
+   "ct" '(counsel-load-theme :which-key "theme")
 
- "r" '(:ignore t :which-key "run")
-"re" '(ielm :which-key "elisp-shell")
-"rt" '(ansi-term :which-key "term")
+   "r" '(:ignore t :which-key "run")
+  "re" '(ielm :which-key "elisp-shell")
+  "rt" '(ansi-term :which-key "term")
 
- "b" '(:ignore t :which-key "buffer")
- "bb" '(counsel-switch-buffer :which-key "switch")
- "bk" '(kill-buffer :which-key "kill")
+   "b" '(:ignore t :which-key "buffer")
+   "bb" '(counsel-switch-buffer :which-key "switch")
+   "bk" '(kill-buffer :which-key "kill")
 
- "." '(counsel-find-file :which-key "file")
- "/" '(counsel-M-x :which-key "M-x")
- "SPC" '(eshell :which-key "eshell")
- )
+   "." '(counsel-find-file :which-key "file")
+   "," '(counsel-switch-buffer :which-key "buffer")
+   "/" '(counsel-M-x :which-key "M-x")
+   "SPC" '(eshell :which-key "eshell")
+   )
 
 #+end_src
 * Theme

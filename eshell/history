@@ -1,7 +1,3 @@
-c
-polybar exwm-panel
-c
-ls
 cd .emacs.d/
 c
 l
@@ -126,3 +122,7 @@ c
 ls
 cd
 c
+git push
+ls
+ssh
+exit

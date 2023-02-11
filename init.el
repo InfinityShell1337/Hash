@@ -285,6 +285,7 @@
  "bk" '(kill-buffer :which-key "kill")
 
  "." '(counsel-find-file :which-key "file")
+ "," '(counsel-switch-buffer :which-key "buffer")
  "/" '(counsel-M-x :which-key "M-x")
  "SPC" '(eshell :which-key "eshell")
  )
