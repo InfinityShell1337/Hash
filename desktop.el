@@ -7,7 +7,7 @@
 
 (defun hash/exwm-update-title ()
   (pcase exwm-class-name
-    ("firefox" (exwm-workspace-rename-buffer (format "Firefox: %s" exwm-title)))
+    ("Firefox" (exwm-workspace-rename-buffer (format "Firefox: %s" exwm-title)))
     ))
 
 (defun hash/configure-window-by-class ()
@@ -16,13 +16,13 @@
 
   ;; Send windows to workspaces on creation
   (pcase exwm-class-name
-    ("firefox" (exwm-workspace-move-window 2))
+    ("Firefox" (exwm-workspace-move-window 2))
     )
   )
 
 (defun hash/set-wallpaper ()
   (interactive)
-  (hash/run-in-background "feh --bg-scale /usr/share/backgrounds/mountain.jpg")
+  (hash/run-in-background "feh --bg-scale /home/void/wallpapers/space.jpg")
   )
 
 (defun hash/exwm-init-hook ()
@@ -83,7 +83,7 @@
       ?\C-\ ))  ;; Ctrl+Space
 
   ;; Ctrl+Q will enable the next key to be sent directly
-  (define-key exwm-mode-map [?\C-q] 'exwm-input-send-next-key)
+  ;;(define-key exwm-mode-map [?\C-q] 'exwm-input-send-next-key)
 
   ;; Set up global key bindings.  These always work, no matter the input state!
   ;; Keep in mind that changing this list after EXWM initializes has no effect.
@@ -115,6 +115,7 @@
                           (exwm-workspace-switch-create ,i))))
                     (number-sequence 0 9))))
 
+  (exwm-input-set-key (kbd "s-q") 'exwm-input-send-next-key)
   (exwm-input-set-key (kbd "s-a") 'counsel-linux-app)
   (exwm-input-set-key (kbd "s-f") 'exwm-layout-toggle-fullscreen)
   (exwm-input-set-key (kbd "s-<return>") 'eshell)

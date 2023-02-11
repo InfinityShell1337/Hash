@@ -4,3 +4,4 @@ picom
 polybar
 pasystray
 pavucontrol
+network-manager-appplet

@@ -1,6 +1,4 @@
 /home/arch/.config/emacs
-/home/arch/.config/emacs/eshell
-/home/arch/.config/emacs
 /home/arch/.config/emacs
 /home/arch/.config/emacs
 /home/arch/.config/emacs
@@ -26,8 +24,10 @@
 /home/arch/.emacs.d
 /home/arch/.emacs.d/url
 /home/arch/.emacs.d
-~
 /usr/share/dbus-1
 /usr/share/dbus-1/services
 /home/arch
 /home/void/.emacs.d
+~
+/home/void/.emacs.d/elpa
+~

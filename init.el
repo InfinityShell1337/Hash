@@ -297,7 +297,7 @@
 (load-theme 'doom-palenight t)
 ;(load-theme 'doom-challenger-deep t)
 
-(set-frame-parameter (selected-frame) 'alpha '(90 . 90))
-(add-to-list 'default-frame-alist '(alpha . (90 . 90)))
+(set-frame-parameter (selected-frame) 'alpha '(80 . 90))
+(add-to-list 'default-frame-alist '(alpha . (80 . 90)))
 (set-frame-parameter (selected-frame) 'fullscreen 'maximized)
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
