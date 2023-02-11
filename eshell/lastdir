@@ -1,9 +1,5 @@
 /home/arch/.config/emacs
 /home/arch/.config/emacs
-/home/arch/.config/emacs
-/home/arch/.config/emacs
-/home/arch/.config/emacs
-/home/arch/.config/emacs
 /home/arch/LINUX-DISTROS
 /usr
 /usr/share
@@ -28,6 +24,10 @@
 /usr/share/dbus-1/services
 /home/arch
 /home/void/.emacs.d
-~
 /home/void/.emacs.d/elpa
+/home/void/.emacs.d
+/home/void/.emacs.d
+/home/void/.emacs.d
 ~
+/home/void/Projects
+/home/void/Projects/rust

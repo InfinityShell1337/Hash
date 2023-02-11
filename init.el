@@ -140,6 +140,7 @@
 (general-define-key
  "C-M-j" 'counsel-switch-buffer
  "C-x b" 'counsel-switch-buffer
+ "C-M-<tab>" 'eval-expression
  "RET" 'evil-open-below
  )
 
@@ -271,6 +272,19 @@
                 (org-level-7 . 1.1)
                 (org-level-8 . 1.1)))
   (set-face-attribute (car face) nil :weight 'regular :height (cdr face)))
+
+(use-package lsp-mode
+  :commands (lsp lsp-deferred)
+  :init
+  (setq lsp-keymap-prefix "C-c l")
+  :config
+  (lsp-enable-which-key-integration t)
+ )
+
+(use-package rust-mode
+  :mode "\\.ts\\'"
+  :hook (rust-mode . lsp-deferred)
+  )
 
 (hash/leader-keys
  "c" '(:ignore t :which-key "config")

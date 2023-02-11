@@ -1,41 +1,3 @@
-notify-send "Test"
-dunst
-dunst --help
-c
-ls
-c
-ls
-q
-c
-ls
-c
-cd .emacs.d/
-ls
-cp ~/Projects/hash/.gitignore .
-ls
-c
-ls
-l
-cd eshell/
-ls
-l
-cat lastdir 
-cd ..
-c
-ls
-l
-c
-l
-cat .gitignore 
-c
-ls
-l
-cd exwm/
-ls
-cd ..
-ls
-;
-c
 ls
 l
 cd auto-save-list/
@@ -111,7 +73,6 @@ c
 git push
 ls
 ssh
-exit
 cd .emacs.d/elpa/
 ls
 rm exwm-0.27/ exwm-0.27.signed -rf
@@ -125,4 +86,43 @@ c
 ls
 git staus
 git status
+git add -A && git commit -m "Updated" && git push
+c
+ls
+hx
+c
+ls
+c
+ff /bedrock/etc/bedrock.conf
+exit
+ls
+c
+cd .emacs.d/
+c
+ls
+q
+c
+ls
+cd .emacs.d/
+c
+ls
+c
+ls
+cd Projects/
+ls
+mkdir rust
+ls
+rm rust
+rm rust -rf
+cargo new rust
+ls
+cd rust
+c
+ls
+ff src/main.rs
+exit
+c
+cd .emacs.d/
+c
+ls
 git add -A && git commit -m "Updated" && git push
