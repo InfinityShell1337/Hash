@@ -1,8 +1,3 @@
-yay -S pavucontrol
-c
-notify-send "Test"
-killall dust
-killall dunst
 notify-send "Test"
 dunst
 dunst --help
@@ -125,4 +120,9 @@ c
 ls
 cd .emacs.d/
 ls
+git add -A && git commit -m "Updated" && git push
+c
+ls
+git staus
+git status
 git add -A && git commit -m "Updated" && git push

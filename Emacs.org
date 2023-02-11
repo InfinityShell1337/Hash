@@ -385,7 +385,7 @@
 
   (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'hash/org-babel-tangle-config)))
 #+end_src
-*** Org Setup
+** Org Setup
 #+begin_src emacs-lisp
 
 (defun hash/org-mode-setup ()
@@ -396,7 +396,7 @@
   (setq evil-auto-indent nil))
 
 #+end_src
-*** Org look nice
+** Org look nice
 #+begin_src emacs-lisp
 
 (require 'org-indent)
@@ -452,9 +452,9 @@
 * Transparency
 #+begin_src emacs-lisp
 
-  (set-frame-parameter (selected-frame) 'alpha '(80 . 90))
-  (add-to-list 'default-frame-alist '(alpha . (80 . 90)))
-  (set-frame-parameter (selected-frame) 'fullscreen 'maximized)
-  (add-to-list 'default-frame-alist '(fullscreen . maximized))
+    (set-frame-parameter (selected-frame) 'alpha '(80 . 90))
+    (add-to-list 'default-frame-alist '(alpha . (80 . 90)))
+    (set-frame-parameter (selected-frame) 'fullscreen 'maximized)
+    (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 #+end_src
