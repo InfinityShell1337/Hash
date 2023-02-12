@@ -27,6 +27,10 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
+(use-package no-littering)
+(setq auto-save-file-name-transforms
+      `((".*" ,(no-littering-expand-var-file-name "auto-save/") t)))
+
 (column-number-mode)
 (global-display-line-numbers-mode t)
 
@@ -173,6 +177,10 @@
   :config
   (evil-collection-init))
 
+(use-package evil-nerd-commenter
+  :bind ("M-/" . evilnc-comment-or-uncomment-lines)
+  )
+
 (use-package hydra
   :defer t)
 
@@ -273,18 +281,48 @@
                 (org-level-8 . 1.1)))
   (set-face-attribute (car face) nil :weight 'regular :height (cdr face)))
 
+(defun hash/lsp-mode-setup ()
+  (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
+  (lsp-headerline-breadcrumb-mode)
+  )
+
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
+  :hook (lsp-mode . hash/lsp-mode-setup)
   :init
   (setq lsp-keymap-prefix "C-c l")
   :config
   (lsp-enable-which-key-integration t)
  )
 
-(use-package rust-mode
-  :mode "\\.ts\\'"
-  :hook (rust-mode . lsp-deferred)
+(use-package lsp-ui
+  :hook (lsp-mode . lsp-ui-mode)
   )
+
+(use-package lsp-treemacs
+  :after lsp
+  )
+
+(use-package lsp-ivy)
+
+(use-package company
+  :after lsp-mode
+  :hook (lsp-mode . company-mode)
+  :bind
+  (:map company-active-map
+        ("<tab>" . company-complete-selection))
+  (:map lsp-mode-map
+        ("<tab>" . company-indent-or-complete-common))
+  :custom
+  (company-minimum-prefix-length 1)
+  (company-idle-delay 0.0)
+  )
+
+(use-package company-box
+  :hook (company-mode . company-box-mode)
+  )
+
+(use-package treemacs)
 
 (hash/leader-keys
  "c" '(:ignore t :which-key "config")

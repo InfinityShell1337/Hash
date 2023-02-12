@@ -1,0 +1,26 @@
+cd .emacs.d/
+c
+ls
+alias
+alias c clear
+cp eshell/alias etc/eshell/aliases
+ls
+rm eshell/ -rf
+c
+ff
+exit
+cc
+c
+ls
+ff
+c
+l
+cd .emacs.d/
+c
+l
+c
+ls
+ll
+c
+ls
+git add -A && git commit -m "Updated" && git push
