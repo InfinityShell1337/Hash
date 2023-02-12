@@ -1,45 +1,6 @@
 (undo-tree-save-format-version . 1)
-"59432512cde0908d1e593382f68ed84ec1a96dde"
-[nil nil nil nil (25577 6438 279170 639000) 0 nil]
-([nil nil ((11486 . 12016) (t 25577 6324 590718 378000)) nil (25577 6438 279158 155000) 0 nil])
-([nil nil ((12272 . 12511) (#("(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )" 0 239 (fontified nil)) . -12272) (12225 . 12271) (#("
-" 0 1 (fontified nil)) . -12225) (11759 . 12226) (#(" " 0 1 (fontified nil)) . 11759) (11486 . 11760) (#("(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(warning-suppress-types '((use-package))))" 0 289 (fontified nil)) . -11486) (t 25577 6438 301714 821000)) nil (25577 7042 848129 406000) 0 nil])
-([nil nil ((12277 . 12516) (#("(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )" 0 239 (fontified nil)) . -12277) (12230 . 12276) (#("
-" 0 1 (fontified nil)) . -12230) (11759 . 12231) (#(" " 0 1 (fontified nil)) . 11759) (11486 . 11760) (#("(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(emojify undo-tree company-box company lsp-ivy lsp-treemacs lsp-ui lsp-mode org-present visual-fill-column org-bullets forge magit counsel-projectile projectile all-the-icons-dired dired-single hydra evil-nerd-commenter evil-collection evil which-key general helpful doom-modeline rainbow-delimiters ivy-rich counsel ivy eshell-prompt-extras eshell-up eshell-z esh-help eshell-did-you-mean all-the-icons auto-package-update doom-themes no-littering use-package))
- '(warning-suppress-types '((use-package))))" 0 785 (fontified nil)) . -11486) (t 25577 7042 874695 910000)) nil (25577 14804 744909 422000) 0 nil])
-([nil current ((12297 . 12536) (#("(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )" 0 239 (fontified nil)) . -12297) (12250 . 12296) (#("
-" 0 1 (fontified nil)) . -12250) (11759 . 12251) (#(" " 0 1 (fontified nil)) . 11759) (11486 . 11760) (#("(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(exwm emojify undo-tree company-box company lsp-ivy lsp-treemacs lsp-ui lsp-mode org-present visual-fill-column org-bullets forge magit counsel-projectile projectile all-the-icons-dired dired-single hydra evil-nerd-commenter evil-collection evil which-key general helpful doom-modeline rainbow-delimiters ivy-rich counsel ivy eshell-prompt-extras eshell-up eshell-z esh-help eshell-did-you-mean all-the-icons auto-package-update doom-themes no-littering use-package))
- '(warning-suppress-types '((use-package))))" 0 790 (fontified nil)) . -11486) (t 25577 14804 767453 114000)) nil (25577 14827 921676 222000) 0 nil])
+"e8600d04ff391b212e86beed8e5c4b4b31d0d2de"
+[nil nil nil nil (25577 20149 877164 417000) 0 nil]
+([nil current ((13133 . 13376) (#("
+" 0 1 (fontified nil)) . -13133) (12698 . 13134) (#(" " 0 1 (fontified nil)) . 12698) (12425 . 12699) (t 25577 20138 819286 262000)) nil (25577 20149 877151 631000) 0 nil])
 nil

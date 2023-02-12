@@ -394,29 +394,44 @@
   (add-hook 'after-init-hook #'global-emojify-mode)
   )
 
+(use-package beacon
+  :init (beacon-mode 1)
+  )
+
+(use-package minimap
+  :config
+  (setq minimap-window-location 'right)
+  )
+
 (setq initial-buffer-choice "~/.emacs.d/Welcome.org")
 
 (hash/leader-keys
- "c" '(:ignore t :which-key "config")
- "ct" '(counsel-load-theme :which-key "theme")
+  "t" '(:ignore t :which-key "toggle")
+  "tt" '(counsel-load-theme :which-key "theme")
+  "tr" '(treemacs-select-directory :which-key "treemacs")
+  "tm" '(minimap-mode :which-key "minimap")
 
- "r" '(:ignore t :which-key "run")
-"re" '(ielm :which-key "elisp-shell")
-"rt" '(ansi-term :which-key "term")
+  "tl" '(:ignore t :which-key "lsp")
+  "tlt" '(lsp :which-key "toggle")
+  "tls" '(lsp-treemacs-symbols :which-key "symbols")
 
- "b" '(:ignore t :which-key "buffer")
- "bb" '(counsel-switch-buffer :which-key "switch")
- "bk" '(kill-buffer :which-key "kill")
+  "r" '(:ignore t :which-key "run")
+  "re" '(ielm :which-key "elisp-shell")
+  "rt" '(ansi-term :which-key "term")
 
- "o" '(:ignore t :which-key "org")
- "op" '(org-present :which-key "present")
- "ot" '(org-babel-tangle :which-key "tangle")
+  "b" '(:ignore t :which-key "buffer")
+  "bb" '(counsel-switch-buffer :which-key "switch")
+  "bk" '(kill-buffer :which-key "kill")
 
- "." '(counsel-find-file :which-key "file")
- "," '(counsel-switch-buffer :which-key "buffer")
- "/" '(counsel-M-x :which-key "M-x")
- "RET" '(eshell :which-key "eshell")
- )
+  "o" '(:ignore t :which-key "org")
+  "op" '(org-present :which-key "present")
+  "ot" '(org-babel-tangle :which-key "tangle")
+
+  "." '(counsel-find-file :which-key "file")
+  "," '(counsel-switch-buffer :which-key "buffer")
+  "/" '(counsel-M-x :which-key "M-x")
+  "RET" '(eshell :which-key "eshell")
+  )
 
 ;(load-theme 'doom-Iosvkem t)
 ;(load-theme 'doom-horizon t)
