@@ -1,5 +1,3 @@
-z emacs
-z --help
 c
 sl
 c
@@ -125,4 +123,6 @@ ls
 mkdir roam
 c
 ls
+git add -A && git commit -m "Updated" && git push
+c
 git add -A && git commit -m "Updated" && git push
