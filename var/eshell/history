@@ -1,18 +1,3 @@
-cd .emacs.d/
-c
-ls
-alias
-alias c clear
-cp eshell/alias etc/eshell/aliases
-ls
-rm eshell/ -rf
-c
-ff
-cc
-c
-ls
-ff
-c
 l
 cd .emacs.d/
 c
@@ -118,8 +103,25 @@ c
 ls
 c
 ls
-q
 cd .emacs.d/
+c
+ls
+c
+git add -A && git commit -m "Updated" && git push
+c
+q
+c
+ls
+cd .emacs.d/
+c
+;s
+ls
+c
+whoami
+c
+ls -la
+c
+l
 c
 ls
 c

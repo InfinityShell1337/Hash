@@ -86,29 +86,29 @@
 (use-package eshell-up)
 
 ;; (use-package eshell-git-prompt
-  ;;   :config
-  ;;   (eshell-git-prompt-use-theme 'robbyrussell))
+;;   :config
+;;   (eshell-git-prompt-use-theme 'robbyrussell))
 
-  ;; (use-package eshell-prompt-extras
-  ;;   :after eshell
-  ;;   :config
-  ;;   (autoload 'epe-theme-lambda "eshell-prompt-extras")
-  ;;   (setq eshell-highlight-prompt nil
-  ;;         eshell-prompt-function 'epe-theme-lambda))
+(use-package eshell-prompt-extras
+  :after eshell
+  :config
+  (autoload 'epe-theme-lambda "eshell-prompt-extras")
+  (setq eshell-highlight-prompt nil
+        eshell-prompt-function 'epe-theme-lambda))
 
-(setq eshell-prompt-function
-      (lambda ()
-        (concat
-         (propertize (user-login-name) 'face `(:foreground "red"))
-         (propertize "@" 'face `(:foreground "green"))
-         (propertize (system-name) 'face `(:foreground "blue"))
-         (propertize " " 'face `(:foreground "green"))
-         (propertize (concat (eshell/pwd)) 'face `(:foreground "black"))
-         (propertize " λ" 'face `(:foreground "purple"))
-         (propertize " " 'face `(:foreground "white"))
-         )))
+;; (setq eshell-prompt-function
+;;       (lambda ()
+;;         (concat
+;;          (propertize (user-login-name) 'face `(:foreground "red"))
+;;          (propertize "@" 'face `(:foreground "green"))
+;;          (propertize (system-name) 'face `(:foreground "blue"))
+;;          (propertize " " 'face `(:foreground "green"))
+;;          (propertize (concat (eshell/pwd)) 'face `(:foreground "black"))
+;;          (propertize " λ" 'face `(:foreground "purple"))
+;;          (propertize " " 'face `(:foreground "white"))
+;;          )))
 
-(setq eshell-prompt-regexp "^[^#$\n!%&*()]* [^#$\n!%&*()]* λ ")
+;; (setq eshell-prompt-regexp "^[^#$\n!%&*()]* [^#$\n!%&*()]* λ ")
 
 (use-package ivy
   :diminish
