@@ -14,8 +14,9 @@
 (require 'package)
 
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
-			 ("org" . "https://orgmode.org/elpa/")
-			 ("elpa" . "https://elpa.gnu.org/packages/")))
+                         ("nongnu" . "https://elpa.nongnu.org/nongnu/")
+                         ("org" . "https://orgmode.org/elpa/")
+                         ("elpa" . "https://elpa.gnu.org/packages/")))
 
 (package-initialize)
 (unless package-archive-contents
@@ -76,9 +77,38 @@
 (use-package eshell
   :hook (eshell-first-time-mode . hash/configure-eshell))
 
-(use-package eshell-git-prompt
-  :config
-  (eshell-git-prompt-use-theme 'robbyrussell))
+(use-package eshell-did-you-mean)
+
+(use-package esh-help)
+
+(use-package eshell-z)
+
+(use-package eshell-up)
+
+;; (use-package eshell-git-prompt
+  ;;   :config
+  ;;   (eshell-git-prompt-use-theme 'robbyrussell))
+
+  ;; (use-package eshell-prompt-extras
+  ;;   :after eshell
+  ;;   :config
+  ;;   (autoload 'epe-theme-lambda "eshell-prompt-extras")
+  ;;   (setq eshell-highlight-prompt nil
+  ;;         eshell-prompt-function 'epe-theme-lambda))
+
+(setq eshell-prompt-function
+      (lambda ()
+        (concat
+         (propertize (user-login-name) 'face `(:foreground "red"))
+         (propertize "@" 'face `(:foreground "green"))
+         (propertize (system-name) 'face `(:foreground "blue"))
+         (propertize " " 'face `(:foreground "green"))
+         (propertize (concat (eshell/pwd)) 'face `(:foreground "black"))
+         (propertize " λ" 'face `(:foreground "purple"))
+         (propertize " " 'face `(:foreground "white"))
+         )))
+
+(setq eshell-prompt-regexp "^[^#$\n!%&*()]* [^#$\n!%&*()]* λ ")
 
 (use-package ivy
   :diminish
@@ -170,7 +200,10 @@
   (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
 
   (evil-set-initial-state 'messages-buffer-mode 'normal)
-  (evil-set-initial-state 'dashboard-mode 'normal))
+  (evil-set-initial-state 'dashboard-mode 'normal)
+
+  (evil-set-undo-system 'undo-redo)
+  )
 
 (use-package evil-collection
   :after evil
@@ -281,6 +314,16 @@
                 (org-level-8 . 1.1)))
   (set-face-attribute (car face) nil :weight 'regular :height (cdr face)))
 
+(defun hash/org-present-prepare-slide (buffer-name heading)
+  ;; Hide cursor
+  (org-present-hide-cursor)
+  )
+
+(use-package org-present
+  :init
+  (add-hook 'org-present-after-navigate-functions 'hash/org-present-prepare-slide)
+  )
+
 (defun hash/lsp-mode-setup ()
   (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
   (lsp-headerline-breadcrumb-mode)
@@ -324,6 +367,19 @@
 
 (use-package treemacs)
 
+(use-package undo-tree
+  :init
+  (global-undo-tree-mode)
+
+  :custom
+  (undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
+  )
+
+(use-package emojify
+  :init
+  (add-hook 'after-init-hook #'global-emojify-mode)
+  )
+
 (hash/leader-keys
  "c" '(:ignore t :which-key "config")
  "ct" '(counsel-load-theme :which-key "theme")
@@ -336,6 +392,10 @@
  "bb" '(counsel-switch-buffer :which-key "switch")
  "bk" '(kill-buffer :which-key "kill")
 
+ "o" '(:ignore t :which-key "org")
+ "op" '(org-present :which-key "present")
+ "ot" '(org-babel-tangle :which-key "tangle")
+
  "." '(counsel-find-file :which-key "file")
  "," '(counsel-switch-buffer :which-key "buffer")
  "/" '(counsel-M-x :which-key "M-x")
@@ -345,8 +405,8 @@
 ;(load-theme 'doom-Iosvkem t)
 ;(load-theme 'doom-horizon t)
 ;(load-theme 'doom-outrun-electric t)
-;(load-theme 'doom-dracula t)
-(load-theme 'doom-palenight t)
+(load-theme 'doom-dracula t)
+;(load-theme 'doom-palenight t)
 ;(load-theme 'doom-challenger-deep t)
 
 (set-frame-parameter (selected-frame) 'alpha '(80 . 90))

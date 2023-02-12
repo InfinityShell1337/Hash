@@ -1,0 +1,32 @@
+(undo-tree-save-format-version . 1)
+"8cad21b1226e8a9b4098dc35cd3e6537350d021f"
+[nil nil nil nil (25576 64917 68737 428000) 0 nil]
+([nil nil ((11614 . 11857) (#("
+" 0 1 (fontified nil)) . -11614) (11140 . 11615) (#(" " 0 1 (fontified nil)) . 11140) (10867 . 11141) (t 25576 64913 227935 695000)) nil (25576 64917 68722 12000) 0 nil])
+([nil nil ((11626 . 11865) (#("(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )" 0 239 (fontified nil)) . -11626) (11623 . 11625) (#("
+" 0 1 (fontified nil)) . -11623) (11140 . 11624) (#(" " 0 1 (fontified nil)) . 11140) (10867 . 11141) (#("(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(esh-help eshell-did-you-mean eshell-prompt-extras doom-eshell which-key visual-fill-column use-package undo-tree typescript-mode rust-mode rainbow-delimiters org-present org-bullets no-littering multiple-cursors lsp-ui lsp-treemacs lsp-ivy ivy-rich helpful general forge exwm evil-nerd-commenter evil-collection eshell-git-prompt emojify doom-themes doom-modeline dired-single desktop-environment counsel-projectile company-box auto-package-update all-the-icons-dired)))" 0 749 (fontified nil)) . -10867) (t 25576 64917 89935 574000)) nil (25576 64921 529505 37000) 0 nil])
+([nil current ((11636 . 11875) (#("(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )" 0 239 (fontified nil)) . -11636) (11633 . 11635) (#("
+" 0 1 (fontified nil)) . -11633) (11140 . 11634) (#(" " 0 1 (fontified nil)) . 11140) (10867 . 11141) (#("(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(eshell-z esh-help eshell-did-you-mean eshell-prompt-extras doom-eshell which-key visual-fill-column use-package undo-tree typescript-mode rust-mode rainbow-delimiters org-present org-bullets no-littering multiple-cursors lsp-ui lsp-treemacs lsp-ivy ivy-rich helpful general forge exwm evil-nerd-commenter evil-collection eshell-git-prompt emojify doom-themes doom-modeline dired-single desktop-environment counsel-projectile company-box auto-package-update all-the-icons-dired)))" 0 758 (fontified nil)) . -10867) (t 25576 64921 554935 435000)) nil (25576 64999 34737 877000) 0 nil])
+nil

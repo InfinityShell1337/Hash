@@ -1,0 +1,13 @@
+(undo-tree-save-format-version . 1)
+"6e85f53cc4c61abb91f930ffaba31a8f209fe48f"
+[nil nil nil nil (25576 65060 200652 170000) 0 nil]
+([nil current ((1 . 176) (#("alias e find-file $1
+alias fd find-dired $PWD \"\"
+alias d dired $1
+alias ff find-file $1
+alias q exit
+alias c clear-scrollback
+alias l ls -la
+alias la ls -a
+" 0 156 (fontified nil)) . 1) (t 25576 25318 336674 40000)) nil (25576 65060 200637 896000) 0 nil])
+nil

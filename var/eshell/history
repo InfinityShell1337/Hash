@@ -8,7 +8,6 @@ ls
 rm eshell/ -rf
 c
 ff
-exit
 cc
 c
 ls
@@ -23,4 +22,105 @@ ls
 ll
 c
 ls
+git add -A && git commit -m "Updated" && git push
+c
+git pull
+c
+\
+ls
+c
+whoami
+(eshell-prompt-function 'epe-theme-lambda)
+exit
+c
+ls
+ls
+ls
+(format eshell-prompt-regexp)
+(format eshell-prompt-function)
+(print eshell-prompt-function)
+(eshell-prompt-function)
+ls
+c
+c
+z
+z ls
+z emacs
+z --help
+c
+sl
+c
+cd .emacs.d/exwm/
+c
+up em
+eshell-up em
+alias up eshell-up
+up
+cd .emacs.d/exwm/
+up em
+c
+cd exwm/
+up ~
+cd exwm/
+up vo
+c
+ls
+up
+cd void/
+c
+ls
+help
+run-help
+c
+ls
+c
+ls
+c
+c
+ls
+c
+c
+ls
+c
+ls -la
+history
+c
+c
+ls -la
+history
+c
+cd .emacs.d/
+cd ..
+c
+ls
+cd .emacs.d/
+c
+ls
+c
+cd .emacs.d/
+(setq eshell-prompt-function        (lambda ()          (concat           (propertize (user-login-name) 'face `(:foreground "red"))           (propertize "@" 'face `(:foreground "green"))           (propertize (system-name) 'face `(:foreground "blue"))           (propertize " " 'face `(:foreground "green"))           (propertize (concat (eshell/pwd)) 'face `(:foreground "white"))           (propertize " λ" 'face `(:foreground "purple"))           (propertize " " 'face `(:foreground "white"))           )))
+cd ..
+(setq eshell-prompt-function        (lambda ()          (concat           (propertize (user-login-name) 'face `(:foreground "red"))           (propertize "@" 'face `(:foreground "green"))           (propertize (system-name) 'face `(:foreground "blue"))           (propertize " " 'face `(:foreground "green"))           (propertize (concat (eshell/pwd)) 'face `(:foreground "white"))           (propertize " λ" 'face `(:foreground "purple"))           (propertize " " 'face `(:foreground "white"))           )))
+pwd
+ls
+pwd
+cd .emacs.d/
+cd
+cd ~
+ls
+pwd
+c
+ls
+c
+ls
+cd .emacs.d/
+c
+ls
+c
+ls
+q
+cd .emacs.d/
+c
+ls
+c
 git add -A && git commit -m "Updated" && git push
