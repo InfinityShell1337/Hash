@@ -1,5 +1,5 @@
 #+STARTUP: inlineimages
-                                                                                                 [[~/.emacs.d/Emacs-Logo.png]]
+[[~/.emacs.d/Emacs-Logo.png]]
 
 * Welcome To Hash
 ** Useful Keybindings:

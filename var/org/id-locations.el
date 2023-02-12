@@ -1,0 +1,2 @@
+
+(("~/.emacs.d/roam/20230212164302-awk.org" "14b2aabc-71ff-42a8-a5f1-0f6d7d6ea599") ("~/.emacs.d/roam/20230212164251-rust.org" "e2a48a37-5c64-4716-b9e0-680fb46b713c") ("~/.emacs.d/roam/20230212164242-shell.org" "a5cff50d-538a-4618-a553-303e7393c853") ("~/.emacs.d/roam/20230212164227-common_lisp.org" "c048a40a-ec8d-4f37-a152-5d830822df70") ("~/.emacs.d/roam/20230212162637-emacs_lisp.org" "cfe021f6-198a-4975-b0d3-7b9fd5697fde") ("~/.emacs.d/roam/20230212162238-programming_languages.org" "2d489473-09d9-427c-8f74-222ef9793565"))

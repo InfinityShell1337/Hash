@@ -1,8 +1,4 @@
 c
-sl
-c
-cd .emacs.d/exwm/
-c
 up em
 eshell-up em
 alias up eshell-up
@@ -97,7 +93,6 @@ cd .emacs.d/
 c
 git add -A && git commit -m "Updated" && git push
 c
-q
 c
 mv Downloads/pngwing.com.png .emacs.d/Emacs-Logo.png
 cd .emacs.d/
@@ -125,4 +120,9 @@ c
 ls
 git add -A && git commit -m "Updated" && git push
 c
+git add -A && git commit -m "Updated" && git push
+c
+q
+c
+ls
 git add -A && git commit -m "Updated" && git push

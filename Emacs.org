@@ -114,7 +114,8 @@
     (setq eshell-history-size         10000
           eshell-buffer-maximum-lines 10000
           eshell-hist-ignoredups t
-          eshell-scroll-to-bottom-on-input t))
+          eshell-scroll-to-bottom-on-input t
+          eshell-banner-message ""))
 
   (use-package eshell
     :hook (eshell-first-time-mode . hash/configure-eshell))

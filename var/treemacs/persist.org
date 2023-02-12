@@ -1,3 +1,3 @@
 * Default
-** c
- - path :: ~/Projects/c
+** .emacs.d
+ - path :: ~/.emacs.d
