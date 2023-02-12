@@ -1,9 +1,3 @@
-l
-cd .emacs.d/
-c
-l
-c
-ls
 ll
 c
 ls
@@ -124,5 +118,11 @@ c
 l
 c
 ls
+c
+git add -A && git commit -m "Updated" && git push
+q
+c
+ls
+cd .emacs.d/
 c
 git add -A && git commit -m "Updated" && git push

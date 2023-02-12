@@ -413,3 +413,17 @@
 (add-to-list 'default-frame-alist '(alpha . (80 . 90)))
 (set-frame-parameter (selected-frame) 'fullscreen 'maximized)
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(desktop-environment exwm emojify undo-tree company-box company lsp-ivy lsp-treemacs lsp-ui lsp-mode org-present visual-fill-column org-bullets forge magit counsel-projectile projectile all-the-icons-dired dired-single hydra evil-nerd-commenter evil-collection evil which-key general helpful doom-modeline rainbow-delimiters ivy-rich counsel ivy eshell-prompt-extras eshell-up eshell-z esh-help eshell-did-you-mean all-the-icons auto-package-update doom-themes no-littering use-package))
+ '(warning-suppress-types '((use-package))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
