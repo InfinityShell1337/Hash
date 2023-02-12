@@ -1,0 +1,12 @@
+#+STARTUP: inlineimages
+                                                                                                 [[~/.emacs.d/Emacs-Logo.png]]
+
+* Welcome To Hash
+** Useful Keybindings:
+|---------+-----------------------+----------------|
+| Keybind | Binding               | Description    |
+|---------+-----------------------+----------------|
+| SPC .   | counsel-find-file     | Open A File    |
+| SPC ,   | counsel-switch-buffer | Switch Buffers |
+| SPC RET | eshell                | Run Eshell     |
+|---------+-----------------------+----------------|

@@ -11,6 +11,10 @@
 
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit) ; Make ESC quit prompts
 
+(set-face-attribute 'default nil :font "Fira Code Retina" :height 100)
+
+(set-face-attribute 'fixed-pitch nil :font "Fira Code Retina" :height 100)
+
 (require 'package)
 
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
@@ -297,15 +301,25 @@
   (variable-pitch-mode 1)
   (auto-fill-mode 0)
   (visual-line-mode 1)
-  (setq evil-auto-indent nil))
+  (setq evil-auto-indent nil)
+
+  (set-face-attribute 'org-block nil :foreground nil :inherit 'fixed-pitch)
+  (set-face-attribute 'org-code nil :inherit '(shadow fixed-pitch))
+  (set-face-attribute 'org-table nil :inherit '(shadow fixed-pitch))
+  (set-face-attribute 'org-indent nil :inherit '(org-hide fixed-pitch))
+  (set-face-attribute 'org-verbatim nil :inherit '(shadow fixed-pitch))
+  (set-face-attribute 'org-special-keyword nil :inherit '(font-lock-comment-face fixed-pitch))
+  (set-face-attribute 'org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
+  (set-face-attribute 'org-checkbox nil :inherit 'fixed-pitch)
+  )
 
 (require 'org-indent)
 (font-lock-add-keywords 'org-mode
-			'(("^ *\\([-]\\) "
-			   (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+                        '(("^ *\\([-]\\) "
+                           (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
 
 (dolist (face '((org-level-1 . 1.2)
-		(org-level-2 . 1.1)
+                (org-level-2 . 1.1)
                 (org-level-3 . 1.05)
                 (org-level-4 . 1.0)
                 (org-level-5 . 1.1)
@@ -380,6 +394,8 @@
   (add-hook 'after-init-hook #'global-emojify-mode)
   )
 
+(setq initial-buffer-choice "~/.emacs.d/Welcome.org")
+
 (hash/leader-keys
  "c" '(:ignore t :which-key "config")
  "ct" '(counsel-load-theme :which-key "theme")
@@ -399,7 +415,7 @@
  "." '(counsel-find-file :which-key "file")
  "," '(counsel-switch-buffer :which-key "buffer")
  "/" '(counsel-M-x :which-key "M-x")
- "SPC" '(eshell :which-key "eshell")
+ "RET" '(eshell :which-key "eshell")
  )
 
 ;(load-theme 'doom-Iosvkem t)
@@ -413,17 +429,3 @@
 (add-to-list 'default-frame-alist '(alpha . (80 . 90)))
 (set-frame-parameter (selected-frame) 'fullscreen 'maximized)
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(desktop-environment exwm emojify undo-tree company-box company lsp-ivy lsp-treemacs lsp-ui lsp-mode org-present visual-fill-column org-bullets forge magit counsel-projectile projectile all-the-icons-dired dired-single hydra evil-nerd-commenter evil-collection evil which-key general helpful doom-modeline rainbow-delimiters ivy-rich counsel ivy eshell-prompt-extras eshell-up eshell-z esh-help eshell-did-you-mean all-the-icons auto-package-update doom-themes no-littering use-package))
- '(warning-suppress-types '((use-package))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )

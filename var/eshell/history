@@ -1,21 +1,3 @@
-ll
-c
-ls
-git add -A && git commit -m "Updated" && git push
-c
-git pull
-c
-\
-ls
-c
-whoami
-(eshell-prompt-function 'epe-theme-lambda)
-exit
-c
-ls
-ls
-ls
-(format eshell-prompt-regexp)
 (format eshell-prompt-function)
 (print eshell-prompt-function)
 (eshell-prompt-function)
@@ -103,7 +85,6 @@ ls
 c
 git add -A && git commit -m "Updated" && git push
 c
-q
 c
 ls
 cd .emacs.d/
@@ -120,9 +101,28 @@ c
 ls
 c
 git add -A && git commit -m "Updated" && git push
-q
 c
 ls
 cd .emacs.d/
+c
+git add -A && git commit -m "Updated" && git push
+c
+q
+c
+mv Downloads/pngwing.com.png .emacs.d/Emacs-Logo.png
+cd .emacs.d/
+c
+ls
+mv Downloads/ .emacs.d/Emacs-Logo.png
+cd ..
+mv Downloads/pngwing.com.png .emacs.d/Emacs-Logo.png
+c
+cd .emacs.d/
+c
+ls
+c
+xbps-install font-firacode
+xbps-install font-firacode~/.emacs.d:main*? λ ~/.emacs.d:main*? λ 
+sudo xbps-install font-firacode
 c
 git add -A && git commit -m "Updated" && git push

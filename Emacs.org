@@ -17,6 +17,10 @@
 
   (global-set-key (kbd "<escape>") 'keyboard-escape-quit) ; Make ESC quit prompts
 
+  (set-face-attribute 'default nil :font "Fira Code Retina" :height 100)
+  
+  (set-face-attribute 'fixed-pitch nil :font "Fira Code Retina" :height 100)
+
 #+end_src
 * Initialize Packages
 ** Init Packages
@@ -438,31 +442,41 @@
 ** Org Setup
 #+begin_src emacs-lisp
 
-(defun hash/org-mode-setup ()
-  (org-indent-mode)
-  (variable-pitch-mode 1)
-  (auto-fill-mode 0)
-  (visual-line-mode 1)
-  (setq evil-auto-indent nil))
+  (defun hash/org-mode-setup ()
+    (org-indent-mode)
+    (variable-pitch-mode 1)
+    (auto-fill-mode 0)
+    (visual-line-mode 1)
+    (setq evil-auto-indent nil)
+
+    (set-face-attribute 'org-block nil :foreground nil :inherit 'fixed-pitch)
+    (set-face-attribute 'org-code nil :inherit '(shadow fixed-pitch))
+    (set-face-attribute 'org-table nil :inherit '(shadow fixed-pitch))
+    (set-face-attribute 'org-indent nil :inherit '(org-hide fixed-pitch))
+    (set-face-attribute 'org-verbatim nil :inherit '(shadow fixed-pitch))
+    (set-face-attribute 'org-special-keyword nil :inherit '(font-lock-comment-face fixed-pitch))
+    (set-face-attribute 'org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
+    (set-face-attribute 'org-checkbox nil :inherit 'fixed-pitch)
+    )
 
 #+end_src
 ** Org look nice
 #+begin_src emacs-lisp
 
-(require 'org-indent)
-(font-lock-add-keywords 'org-mode
-			'(("^ *\\([-]\\) "
-			   (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+  (require 'org-indent)
+  (font-lock-add-keywords 'org-mode
+                          '(("^ *\\([-]\\) "
+                             (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
 
-(dolist (face '((org-level-1 . 1.2)
-		(org-level-2 . 1.1)
-                (org-level-3 . 1.05)
-                (org-level-4 . 1.0)
-                (org-level-5 . 1.1)
-                (org-level-6 . 1.1)
-                (org-level-7 . 1.1)
-                (org-level-8 . 1.1)))
-  (set-face-attribute (car face) nil :weight 'regular :height (cdr face)))
+  (dolist (face '((org-level-1 . 1.2)
+                  (org-level-2 . 1.1)
+                  (org-level-3 . 1.05)
+                  (org-level-4 . 1.0)
+                  (org-level-5 . 1.1)
+                  (org-level-6 . 1.1)
+                  (org-level-7 . 1.1)
+                  (org-level-8 . 1.1)))
+    (set-face-attribute (car face) nil :weight 'regular :height (cdr face)))
 
 #+end_src
 ** Org present
@@ -552,6 +566,10 @@
     (add-hook 'after-init-hook #'global-emojify-mode)
     )
 #+end_src
+* Start Page
+#+begin_src emacs-lisp
+(setq initial-buffer-choice "~/.emacs.d/Welcome.org")
+#+end_src
 * Keybindings
 #+begin_src emacs-lisp
 
@@ -574,7 +592,7 @@
    "." '(counsel-find-file :which-key "file")
    "," '(counsel-switch-buffer :which-key "buffer")
    "/" '(counsel-M-x :which-key "M-x")
-   "SPC" '(eshell :which-key "eshell")
+   "RET" '(eshell :which-key "eshell")
    )
 
 #+end_src
