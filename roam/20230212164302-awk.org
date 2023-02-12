@@ -1,0 +1,5 @@
+:PROPERTIES:
+:ID:       14b2aabc-71ff-42a8-a5f1-0f6d7d6ea599
+:END:
+#+title: Awk
+

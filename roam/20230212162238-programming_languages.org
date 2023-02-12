@@ -1,0 +1,11 @@
+:PROPERTIES:
+:ID:       2d489473-09d9-427c-8f74-222ef9793565
+:END:
+#+title: Programming Languages
+
+* List of Programming Languages
+- [[id:14b2aabc-71ff-42a8-a5f1-0f6d7d6ea599][Awk]]
+- [[id:e2a48a37-5c64-4716-b9e0-680fb46b713c][Rust]]
+- [[id:a5cff50d-538a-4618-a553-303e7393c853][Shell]]
+- [[id:c048a40a-ec8d-4f37-a152-5d830822df70][Common Lisp]]
+- [[id:cfe021f6-198a-4975-b0d3-7b9fd5697fde][Emacs Lisp]]

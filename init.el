@@ -338,6 +338,21 @@
   (add-hook 'org-present-after-navigate-functions 'hash/org-present-prepare-slide)
   )
 
+(use-package org-roam
+  :ensure t
+  :custom
+  (org-roam-directory "~/.emacs.d/roam")
+  (org-roam-completion-everywhere t)
+  :bind (("C-c n l" . org-roam-buffer-toggle)
+         ("C-c n f" . org-roam-node-find)
+         ("C-c n i" . org-roam-node-insert)
+         :map org-mode-map
+         ("C-M-i" . completion-at-point)
+         )
+  :config
+  (org-roam-setup)
+  )
+
 (defun hash/lsp-mode-setup ()
   (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
   (lsp-headerline-breadcrumb-mode)
