@@ -3,3 +3,6 @@
 :END:
 #+title: Emacs Lisp
 
+* Emacs Lisp
+Emacs Lisp is a [[id:2d489473-09d9-427c-8f74-222ef9793565][Programming Language]] that is used to configure [[id:490155c3-e207-4bf8-b3c1-3f16998ce529][Emacs]].
+

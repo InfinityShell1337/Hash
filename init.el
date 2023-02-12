@@ -179,7 +179,7 @@
 (general-define-key
  "C-M-j" 'counsel-switch-buffer
  "C-x b" 'counsel-switch-buffer
- "C-M-<tab>" 'eval-expression
+ "C-M-<tab>" 'eshell
  "RET" 'evil-open-below
  )
 

@@ -3,8 +3,8 @@
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("org-capture-last-stored"
- (filename . "~/.emacs.d/roam/20230212164302-awk.org")
+ (filename . "~/.emacs.d/roam/20230212174311-emacs.org")
  (front-context-string)
- (rear-context-string . "D:\n#+title: Awk\n")
- (position . 81))
+ (rear-context-string . "\n#+title: Emacs\n")
+ (position . 83))
 )

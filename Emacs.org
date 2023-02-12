@@ -254,7 +254,7 @@
   (general-define-key
    "C-M-j" 'counsel-switch-buffer
    "C-x b" 'counsel-switch-buffer
-   "C-M-<tab>" 'eval-expression
+   "C-M-<tab>" 'eshell
    "RET" 'evil-open-below
    )
 
@@ -601,7 +601,9 @@
 #+end_src
 * Start Page
 #+begin_src emacs-lisp
-(setq initial-buffer-choice "~/.emacs.d/Welcome.org")
+
+  (setq initial-buffer-choice "~/.emacs.d/Welcome.org")
+
 #+end_src
 * Keybindings
 #+begin_src emacs-lisp

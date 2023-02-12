@@ -9,3 +9,6 @@
 - [[id:a5cff50d-538a-4618-a553-303e7393c853][Shell]]
 - [[id:c048a40a-ec8d-4f37-a152-5d830822df70][Common Lisp]]
 - [[id:cfe021f6-198a-4975-b0d3-7b9fd5697fde][Emacs Lisp]]
+- [[id:6fa0679b-d3f8-4cae-a36a-ac4b50721c41][C]]
+- [[id:36305809-e63f-4f08-a910-12f114c8ded2][C++]]
+- [[id:fcfaa453-1798-466a-a7bb-d1e80cb52c65][C#]]
