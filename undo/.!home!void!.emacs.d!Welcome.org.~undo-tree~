@@ -1,5 +1,5 @@
 (undo-tree-save-format-version . 1)
-"299c7dd4274b0ec0a0a14a6f357452e1da2bfe78"
+"2bb5d534c74f858a48e1f54625662aa6b77c8ec0"
 [nil nil nil nil (25577 15228 585746 951000) 0 nil]
 ([nil nil ((3 . 14) (1 . 5) (#("i" 0 1 (fontified t line-prefix "" wrap-prefix "")) . -1) (undo-tree-id0 . -1) 2 (1 . 2) (t 25577 15228 604439 856000)) nil (25577 15666 597879 150000) 0 nil])
 ([nil nil ((18 . 24) (1 . 18) (1 . 2) 13) nil (25577 15666 597792 625000) 0 nil])
@@ -187,5 +187,6 @@
 ([nil nil ((24 . 25) (t 25577 27078 113069 197000) 1) nil (25577 38468 845451 52000) 0 nil])
 ([nil nil ((9 . 16) (#("s" 0 1 (fontified t line-prefix "" wrap-prefix "" font-lock-fontified t face org-meta-line)) . -9) (undo-tree-id1 . -1) 10 (9 . 10) (1 . 9) (1 . 2)) nil (25577 38468 845443 765000) 0 nil])
 ([nil nil ((8 . 9)) nil (25577 38468 845432 230000) 0 nil])
-([nil current ((25 . 30) (#("M" 0 1 (fontified t line-prefix "" wrap-prefix "" font-lock-fontified t face org-document-title)) . -25) (undo-tree-id0 . -1) 26 (25 . 26) (17 . 25)) nil (25577 38468 845421 479000) 0 nil])
+([nil nil ((25 . 30) (#("M" 0 1 (fontified t line-prefix "" wrap-prefix "" font-lock-fontified t face org-document-title)) . -25) (undo-tree-id0 . -1) 26 (25 . 26) (17 . 25)) nil (25577 38468 845421 479000) 0 nil])
+([nil current ((585 . 586) (#("," 0 1 (fontified t line-prefix #("    " 0 4 (face org-indent)) wrap-prefix #("    " 0 4 (face org-indent)) face org-table)) . 585) (undo-tree-id2 . -1) (585 . 586) (#("," 0 1 (fontified t face org-table line-prefix #("    " 0 4 (face org-indent)) wrap-prefix #("    " 0 4 (face org-indent)))) . 585) (undo-tree-id3 . -1) (t 25577 38468 889712 888000)) nil (25577 38839 797692 124000) 0 nil])
 nil

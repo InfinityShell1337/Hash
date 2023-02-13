@@ -10,7 +10,7 @@
 |---------+-----------------------+-----------------------------------------------|
 | SPC     | nothing               | Press Space and Wait to see all possible keys |
 | SPC .   | [[elisp:(counsel-find-file)][counsel-find-file]]     | Open A File                                   |
-| SPC ,   | [[elisp:(counsel-switch-buffer)][counsel-switch-buffer]] | Switch Buffers                                |
+| SPC <   | [[elisp:(counsel-switch-buffer)][counsel-switch-buffer]] | Switch Buffers                                |
 | SPC RET | [[elisp:(eshell)][eshell]]                | Run Eshell                                    |
 | SPC /   | [[elisp:(counsel-M-x)][counsel-M-x]]           | Run Command                                   |
 |---------+-----------------------+-----------------------------------------------|
