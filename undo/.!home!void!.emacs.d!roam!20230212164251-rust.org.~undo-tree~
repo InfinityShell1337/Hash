@@ -1,5 +1,0 @@
-(undo-tree-save-format-version . 1)
-"7d47dfebef70cb722c1f9775e14b387e2d563f74"
-[nil nil nil nil (25577 23901 797941 783000) 0 nil]
-([nil current ((#("%?" 0 2 (fontified nil line-prefix "" wrap-prefix "")) . -82) (84 . 84) (82 . 85) (#(":ID: e2a48a37-5c64-4716-b9e0-680fb46b713c" 0 1 (fontified nil line-prefix "" wrap-prefix "") 1 3 (fontified nil line-prefix "" wrap-prefix "") 3 4 (fontified nil line-prefix "" wrap-prefix "") 4 5 (fontified nil line-prefix "" wrap-prefix "") 5 41 (fontified nil line-prefix "" wrap-prefix "")) . -14) (14 . 102) (14 . 15) (1 . 20) (1 . 15) (t . -1)) nil (25577 23901 797928 781000) 0 nil])
-nil
