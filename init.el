@@ -133,6 +133,17 @@
   :config
   (ivy-mode 1))
 
+(use-package ivy-rich
+  :after ivy
+  :init (ivy-rich-mode 1))
+
+(use-package all-the-icons-ivy)
+
+(use-package all-the-icons-ivy-rich
+  :config
+  (all-the-icons-ivy-rich-mode)
+  )
+
 (use-package counsel
   :bind (:map minibuffer-local-map
          ("C-r" . 'counsel-minibuffer-history)
@@ -144,10 +155,6 @@
   :config (counsel-mode 1)
 	  (setq ivy-initial-inputs-alist nil) ; Don't start searches with ^
 	  )
-
-(use-package ivy-rich
-  :after ivy
-  :init (ivy-rich-mode 1))
 
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
@@ -180,6 +187,7 @@
  "C-M-j" 'counsel-switch-buffer
  "C-x b" 'counsel-switch-buffer
  "C-M-<tab>" 'eshell
+ "M-<tab>" 'buffer-flip
  "RET" 'evil-open-below
  )
 
@@ -427,6 +435,22 @@
 (use-package minimap
   :config
   (setq minimap-window-location 'right)
+  )
+
+(use-package smartparens
+  :config
+  (turn-on-smartparens-mode)
+  (turn-on-show-smartparens-mode)
+  )
+
+(use-package buffer-flip
+  :config
+  (setq buffer-flip-map
+        (let ((map (make-sparse-keymap)))
+          (define-key map (kbd "M-<tab>")   'buffer-flip-forward) 
+          (define-key map (kbd "M-<iso-lefttab>") 'buffer-flip-backward)
+          (define-key map (kbd "M-ESC")     'buffer-flip-abort)
+          map))
   )
 
 (setq initial-buffer-choice "~/.emacs.d/Welcome.org")
