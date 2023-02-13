@@ -144,6 +144,16 @@
   (all-the-icons-ivy-rich-mode)
   )
 
+(use-package ivy-posframe
+  :config
+  ;; display at `ivy-posframe-style'
+  ;; (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display)))
+  ;; (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center)))
+  ;; (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-bottom-left)))
+  (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-top-center)))
+  (ivy-posframe-mode 1)
+  )
+
 (use-package counsel
   :bind (:map minibuffer-local-map
          ("C-r" . 'counsel-minibuffer-history)
@@ -187,7 +197,7 @@
  "C-M-j" 'counsel-switch-buffer
  "C-x b" 'counsel-switch-buffer
  "C-M-<tab>" 'eshell
- "M-<tab>" 'buffer-flip
+ "<mouse-9>" 'buffer-flip
  "RET" 'evil-open-below
  )
 
@@ -443,9 +453,9 @@
   :config
   (setq buffer-flip-map
         (let ((map (make-sparse-keymap)))
-          (define-key map (kbd "M-<tab>")   'buffer-flip-forward) 
-          (define-key map (kbd "M-<iso-lefttab>") 'buffer-flip-backward)
-          (define-key map (kbd "M-ESC")     'buffer-flip-abort)
+          (define-key map (kbd "<mouse-9>")   'buffer-flip-forward) 
+          (define-key map (kbd "<mouse-8>") 'buffer-flip-backward)
+          (define-key map (kbd "ESC")     'buffer-flip-abort)
           map))
   )
 

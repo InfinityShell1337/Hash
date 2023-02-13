@@ -1,25 +1,3 @@
-c
-c
-ls
-c
-ls -la
-history
-c
-c
-ls -la
-history
-c
-cd .emacs.d/
-cd ..
-c
-ls
-cd .emacs.d/
-c
-ls
-c
-cd .emacs.d/
-(setq eshell-prompt-function        (lambda ()          (concat           (propertize (user-login-name) 'face `(:foreground "red"))           (propertize "@" 'face `(:foreground "green"))           (propertize (system-name) 'face `(:foreground "blue"))           (propertize " " 'face `(:foreground "green"))           (propertize (concat (eshell/pwd)) 'face `(:foreground "white"))           (propertize " λ" 'face `(:foreground "purple"))           (propertize " " 'face `(:foreground "white"))           )))
-cd ..
 (setq eshell-prompt-function        (lambda ()          (concat           (propertize (user-login-name) 'face `(:foreground "red"))           (propertize "@" 'face `(:foreground "green"))           (propertize (system-name) 'face `(:foreground "blue"))           (propertize " " 'face `(:foreground "green"))           (propertize (concat (eshell/pwd)) 'face `(:foreground "white"))           (propertize " λ" 'face `(:foreground "purple"))           (propertize " " 'face `(:foreground "white"))           )))
 pwd
 ls
@@ -99,7 +77,6 @@ c
 ls
 git add -A && git commit -m "Updated" && git push
 c
-q
 git add -A && git commit -m "Updated" && git push
 c
 c
@@ -124,5 +101,28 @@ git status
 git add -A && git commit -m "Updated" && git push
 c
 cd ~/Projects/rust/
+c
+ls
+cargo run
+c
+cargo run
+cargo build
+cargo run
+c
+cargo run
+c
+cargo run
+c
+cargo run
+c
+cargo run
+c
+cargo run
+c
+cargo build
+c
+ls
+c
+q
 c
 ls

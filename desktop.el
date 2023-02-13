@@ -22,7 +22,7 @@
 
 (defun hash/set-wallpaper ()
   (interactive)
-  (hash/run-in-background "feh --bg-scale /home/void/wallpapers/space.jpg")
+  (hash/run-in-background "nitrogen --restore")
   )
 
 (defun hash/exwm-init-hook ()
@@ -132,15 +132,7 @@
 
   (exwm-enable))
 
-(use-package ivy-posframe
-  :config
-  ;; display at `ivy-posframe-style'
-  ;; (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display)))
-  (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center)))
-  ;; (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-bottom-left)))
-  ;; (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-top-center)))
-  (ivy-posframe-mode 1)
-  )
+(setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center)))
 
 (use-package desktop-environment
   :after exwm

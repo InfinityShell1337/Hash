@@ -1,6 +1,6 @@
 emacs
 slock
-feh
+nitrogen
 picom
 polybar
 pasystray

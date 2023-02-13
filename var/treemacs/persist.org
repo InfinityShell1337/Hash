@@ -1,3 +1,3 @@
 * Default
-** c
- - path :: ~/Projects/c
+** rust
+ - path :: ~/Projects/rust
