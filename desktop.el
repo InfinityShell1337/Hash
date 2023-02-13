@@ -40,7 +40,7 @@
   (hash/run-in-background "pasystray")
 
   ;; modeline extra
-  ;;(display-battery-mode 1)
+  (display-battery-mode 1)
   )
 
 (use-package exwm
