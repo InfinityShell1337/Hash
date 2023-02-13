@@ -1,15 +1,3 @@
-eshell-up em
-alias up eshell-up
-up
-cd .emacs.d/exwm/
-up em
-c
-cd exwm/
-up ~
-cd exwm/
-up vo
-c
-ls
 up
 cd void/
 c
@@ -125,4 +113,16 @@ ls
 git add -A && git commit -m "Updated" && git push
 c
 q
+git add -A && git commit -m "Updated" && git push
+c
+ c
+c
+ls
+c
+neofetch
+c
+sudo pmm -S node
+sudo pmm -S npm
+c
+ls
 git add -A && git commit -m "Updated" && git push

@@ -1,0 +1,10 @@
+(undo-tree-save-format-version . 1)
+"ca5ad44a76031e8f86296792ff152efeffabcef6"
+[nil nil nil nil (25577 37153 412720 324000) 0 nil]
+([nil nil ((784 . 792) (#("res" 0 3 (fontified t)) . -784) (undo-tree-id22 . -3) (undo-tree-id23 . -3) 787 (785 . 787) (#("s" 0 1 (fontified t)) . -785) (undo-tree-id24 . -1) (undo-tree-id25 . -1) 786 (784 . 786) (783 . 784) (t 25576 24088 697712 504000) 737) nil (25577 37153 412713 71000) 0 nil])
+([nil nil ((#("resetBtn
+" 0 8 (fontified t) 8 9 (fontified t)) . 784) (undo-tree-id16 . -3) (undo-tree-id17 . -4) (undo-tree-id18 . -4) (undo-tree-id19 . -3) (undo-tree-id20 . 5) (undo-tree-id21 . -8) 787) nil (25577 37153 412692 760000) 0 nil])
+([nil nil ((784 . 793)) nil (25577 37153 412676 399000) 0 nil])
+([nil current ((#("
+" 0 1 (fontified t)) . 783) (undo-tree-id0 . -1) (undo-tree-id1 . -1) (undo-tree-id2 . -1) (undo-tree-id3 . -1) (undo-tree-id4 . -1) (undo-tree-id5 . -1) (#("rs" 0 1 (fontified nil) 1 2 (fontified nil)) . 784) (undo-tree-id6 . -2) (undo-tree-id7 . -2) (785 . 786) (#("es" 0 2 (fontified nil)) . 785) (undo-tree-id8 . -2) (undo-tree-id9 . -2) (784 . 787) (#("resetBtn" 0 8 (fontified t)) . 784) (undo-tree-id10 . -4) (undo-tree-id11 . -4) (undo-tree-id12 . 4) (undo-tree-id13 . -8) (undo-tree-id14 . -3) (undo-tree-id15 . -3)) nil (25577 37153 412661 732000) 0 nil])
+nil

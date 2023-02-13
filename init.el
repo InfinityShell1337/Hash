@@ -395,6 +395,16 @@
   :hook (company-mode . company-box-mode)
   )
 
+(use-package rust-mode
+  :mode "\\.rs\\'"
+  :hook (rust-mode . lsp-deferred)
+  )
+
+(use-package typescript-mode
+  :mode "\\.ts\\'"
+  :hook (typescript-mode . lsp-deferred)
+  )
+
 (use-package treemacs)
 
 (use-package undo-tree
@@ -436,8 +446,9 @@
   "rt" '(ansi-term :which-key "term")
 
   "b" '(:ignore t :which-key "buffer")
+  "bi" '(ibuffer :which-key "ibuffer")
   "bb" '(counsel-switch-buffer :which-key "switch")
-  "bk" '(kill-buffer :which-key "kill")
+  "bk" '(kill-this-buffer :which-key "kill")
 
   "o" '(:ignore t :which-key "org")
   "op" '(org-present :which-key "present")
