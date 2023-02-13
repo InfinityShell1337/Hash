@@ -1,3 +1,3 @@
 * Default
-** rust
- - path :: ~/Projects/rust
+** .emacs.d
+ - path :: ~/.emacs.d

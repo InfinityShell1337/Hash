@@ -461,6 +461,16 @@
 
 (setq initial-buffer-choice "~/.emacs.d/Welcome.org")
 
+(defun hash/open-emacs-conf ()
+  (interactive)
+  (find-file "~/.emacs.d/Emacs.org")
+  )
+
+(defun hash/open-exwm-conf ()
+  (interactive)
+  (find-file "~/.emacs.d/Desktop.org")
+  )
+
 (hash/leader-keys
   "t" '(:ignore t :which-key "toggle")
   "tt" '(counsel-load-theme :which-key "theme")
@@ -475,6 +485,10 @@
   "re" '(ielm :which-key "elisp-shell")
   "rt" '(ansi-term :which-key "term")
 
+  "c" '(:ignore t :which-key "config")
+  "ce" '(hash/open-emacs-conf :which-key "Emacs.org")
+  "cd" '(hash/open-exwm-conf :which-key "Desktop.org")
+
   "b" '(:ignore t :which-key "buffer")
   "bi" '(ibuffer :which-key "ibuffer")
   "bb" '(counsel-switch-buffer :which-key "switch")
@@ -483,6 +497,7 @@
   "o" '(:ignore t :which-key "org")
   "op" '(org-present :which-key "present")
   "ot" '(org-babel-tangle :which-key "tangle")
+  "or" '(org-redisplay-inline-images :which-key "reload-images")
 
   "." '(counsel-find-file :which-key "file")
   "<" '(counsel-switch-buffer :which-key "buffer")
