@@ -1,9 +1,0 @@
-elpa
-etc/gnus
-auto-save-list
-forge*
-project*
-transient
-undo
-var
-.*
