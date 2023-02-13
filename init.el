@@ -437,11 +437,7 @@
   (setq minimap-window-location 'right)
   )
 
-(use-package smartparens
-  :config
-  (turn-on-smartparens-mode)
-  (turn-on-show-smartparens-mode)
-  )
+(use-package smartparens)
 
 (use-package buffer-flip
   :config

@@ -1,1 +1,1 @@
-("~/Projects/rust/" "~/.emacs.d/" "~/wallpapers/")
+("~/.emacs.d/" "~/Projects/rust/" "~/wallpapers/")
