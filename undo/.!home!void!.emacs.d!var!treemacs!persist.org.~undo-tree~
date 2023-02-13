@@ -1,5 +1,5 @@
 (undo-tree-save-format-version . 1)
-"4a3861e793f20176cabb2e4e54e1021da208d155"
+"718b9d6df6c19d366b991399d9b0a34d9b9df2a3"
 [nil nil nil nil (25577 20729 935099 678000) 0 nil]
 ([nil nil ((1 . 45) (#("* Default
 ** .emacs.d
@@ -9,8 +9,12 @@
 ** .emacs.d
  - path :: ~/.emacs.d
 " 0 44 (fontified nil)) . 1) (t 25577 20729 959267 771000)) nil (25577 21340 252503 5000) 0 nil])
-([nil current ((1 . 45) (#("* Default
+([nil nil ((1 . 45) (#("* Default
 ** c
  - path :: ~/Projects/c
 " 0 39 (fontified nil)) . 1) (t 25577 21340 272248 680000)) nil (25577 24474 77592 785000) 0 nil])
+([nil current ((1 . 40) (#("* Default
+** .emacs.d
+ - path :: ~/.emacs.d
+" 0 44 (fontified nil)) . 1) (t 25577 24474 98150 652000)) nil (25577 37875 595179 300000) 0 nil])
 nil

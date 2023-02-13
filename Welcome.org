@@ -1,4 +1,6 @@
+#+TITLE: Welcome To Hashmacs!
 #+STARTUP: inlineimages
+
 [[~/.emacs.d/Emacs-Logo.png]]
 
 * Welcome To Hash

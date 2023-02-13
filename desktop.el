@@ -64,7 +64,7 @@
   (setq exwm-layout-show-all-buffers t)
 
   ;; Change minibuffer position
-  ;;(setq exwm-workspace-minibuffer-position 'top)
+  ;; (setq exwm-workspace-minibuffer-position 'top)
 
   ;; Turn on auto focus
   (setq mouse-autoselect-window t
