@@ -37,6 +37,9 @@
   ;; Open eshell by default
   ;;(eshell)
 
+  ;; Random Wallpaper
+  (hash/set-random-wallpaper)
+
   ;; Start polybar
   (hash/start-panel)
 

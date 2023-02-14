@@ -644,7 +644,10 @@
 #+end_src
 * Smart brackets
 #+begin_src emacs-lisp
-  (use-package smartparens)
+  (use-package smartparens
+    :config
+    (smartparens-global-mode)
+    )
 #+end_src
 * Buffer flip
 #+begin_src emacs-lisp

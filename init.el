@@ -447,7 +447,10 @@
   (setq minimap-window-location 'right)
   )
 
-(use-package smartparens)
+(use-package smartparens
+  :config
+  (smartparens-global-mode)
+  )
 
 (use-package buffer-flip
   :config
@@ -518,16 +521,3 @@
 (add-to-list 'default-frame-alist '(alpha . (80 . 90)))
 (set-frame-parameter (selected-frame) 'fullscreen 'maximized)
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(pacmacs which-key visual-fill-column use-package undo-tree typescript-mode smartparens rust-mode rainbow-delimiters org-roam org-present org-bullets no-littering minimap lsp-ui lsp-treemacs lsp-ivy ivy-posframe helpful general forge exwm evil-nerd-commenter evil-collection eshell-z eshell-up eshell-prompt-extras eshell-did-you-mean esh-help emojify doom-themes doom-modeline dired-single desktop-environment counsel-projectile company-box buffer-flip beacon auto-package-update all-the-icons-ivy-rich all-the-icons-ivy all-the-icons-dired)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
