@@ -1,9 +1,10 @@
-alias up eshell-up
-alias la ls -a
-alias l ls -la
-alias c clear-scrollback
-alias q exit
-alias ff find-file $1
-alias d dired $1
-alias fd find-dired $PWD ""
+alias x chmod +x nil
 alias e find-file $1
+alias fd find-dired $PWD ""
+alias d dired $1
+alias ff find-file $1
+alias q exit
+alias c clear-scrollback
+alias l ls -la
+alias la ls -a
+alias up eshell-up
