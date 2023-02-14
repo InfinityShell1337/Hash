@@ -287,7 +287,7 @@
 (use-package org-bullets
   :hook (org-mode . org-bullets-mode)
   :custom
-  (org-bullets-bullet-list '("◉" "○" "●" "○" "●" "○" "●")))
+  (org-bullets-bullet-list '("◉" "●" "○" "◆" "●" "○" "◆")))
 
 (use-package visual-fill-column
   :defer t
