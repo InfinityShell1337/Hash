@@ -337,10 +337,10 @@
                         '(("^ *\\([-]\\) "
                            (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
 
-(dolist (face '((org-level-1 . 1.2)
-                (org-level-2 . 1.1)
-                (org-level-3 . 1.05)
-                (org-level-4 . 1.0)
+(dolist (face '((org-level-1 . 1.4)
+                (org-level-2 . 1.3)
+                (org-level-3 . 1.2)
+                (org-level-4 . 1.1)
                 (org-level-5 . 1.1)
                 (org-level-6 . 1.1)
                 (org-level-7 . 1.1)
@@ -516,16 +516,3 @@
 (add-to-list 'default-frame-alist '(alpha . (80 . 90)))
 (set-frame-parameter (selected-frame) 'fullscreen 'maximized)
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(desktop-environment exwm buffer-flip smartparens minimap beacon emojify undo-tree typescript-mode rust-mode company-box company lsp-ivy lsp-treemacs lsp-ui lsp-mode org-roam org-present visual-fill-column org-bullets forge magit counsel-projectile projectile all-the-icons-dired dired-single hydra evil-nerd-commenter evil-collection evil which-key general helpful doom-modeline rainbow-delimiters counsel ivy-posframe all-the-icons-ivy-rich all-the-icons-ivy ivy-rich ivy eshell-prompt-extras eshell-up eshell-z esh-help eshell-did-you-mean all-the-icons auto-package-update doom-themes no-littering use-package)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
