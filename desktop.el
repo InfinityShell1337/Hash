@@ -25,6 +25,11 @@
   (hash/run-in-background "nitrogen --restore")
   )
 
+(defun hash/set-random-wallpaper ()
+  (interactive)
+  (hash/run-in-background "nitrogen --set-zoom-fill --random --save")
+  )
+
 (defun hash/exwm-init-hook ()
   ;; Make workspace 1 the default
   (exwm-workspace-switch-create 1)

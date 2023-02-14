@@ -522,7 +522,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(buffer-flip smartparens minimap beacon emojify undo-tree typescript-mode rust-mode company-box company lsp-ivy lsp-treemacs lsp-ui lsp-mode org-roam org-present visual-fill-column org-bullets forge magit counsel-projectile projectile all-the-icons-dired dired-single hydra evil-nerd-commenter evil-collection evil which-key general helpful doom-modeline rainbow-delimiters counsel ivy-posframe all-the-icons-ivy-rich all-the-icons-ivy ivy-rich ivy eshell-prompt-extras eshell-up eshell-z esh-help eshell-did-you-mean all-the-icons auto-package-update doom-themes no-littering use-package)))
+   '(desktop-environment exwm buffer-flip smartparens minimap beacon emojify undo-tree typescript-mode rust-mode company-box company lsp-ivy lsp-treemacs lsp-ui lsp-mode org-roam org-present visual-fill-column org-bullets forge magit counsel-projectile projectile all-the-icons-dired dired-single hydra evil-nerd-commenter evil-collection evil which-key general helpful doom-modeline rainbow-delimiters counsel ivy-posframe all-the-icons-ivy-rich all-the-icons-ivy ivy-rich ivy eshell-prompt-extras eshell-up eshell-z esh-help eshell-did-you-mean all-the-icons auto-package-update doom-themes no-littering use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

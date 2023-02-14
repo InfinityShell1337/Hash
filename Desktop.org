@@ -32,6 +32,11 @@
     (hash/run-in-background "nitrogen --restore")
     )
 
+  (defun hash/set-random-wallpaper ()
+    (interactive)
+    (hash/run-in-background "nitrogen --set-zoom-fill --random --save")
+    )
+
   (defun hash/exwm-init-hook ()
     ;; Make workspace 1 the default
     (exwm-workspace-switch-create 1)
@@ -351,4 +356,3 @@ label = %temperature-c%
 label-warn = %temperature-c%!
 label-warn-foreground = ${colors.secondary}
 #+end_src
-
