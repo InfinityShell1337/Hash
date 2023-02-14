@@ -658,6 +658,10 @@
             map))
     )
 #+end_src
+* Games
+#+begin_src emacs-lisp
+  (use-package pacmacs)
+#+end_src
 * Start Page
 #+begin_src emacs-lisp
 
