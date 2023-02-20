@@ -188,19 +188,6 @@
 (use-package general
   :config (general-evil-setup t))
 
-(general-create-definer hash/leader-keys
-  :keymaps '(normal insert visual emacs)
-  :prefix "SPC"
-  :global-prefix "C-SPC")
-
-(general-define-key
- "C-M-j" 'counsel-switch-buffer
- "C-x b" 'counsel-switch-buffer
- "C-M-<tab>" 'eshell
- "<mouse-9>" 'buffer-flip
- "RET" 'evil-open-below
- )
-
 (use-package which-key
   :defer 0
   :diminish which-key-mode
@@ -320,7 +307,9 @@
   (variable-pitch-mode 1)
   (auto-fill-mode 0)
   (visual-line-mode 1)
-  (setq evil-auto-indent nil)
+  (setq evil-auto-indent nil
+        org-confirm-babel-evaluate nil
+        )
 
   (set-face-attribute 'org-block nil :foreground nil :inherit 'fixed-pitch)
   (set-face-attribute 'org-code nil :inherit '(shadow fixed-pitch))
@@ -370,6 +359,45 @@
          )
   :config
   (org-roam-setup)
+  )
+
+(use-package treemacs)
+
+(use-package undo-tree
+  :init
+  (global-undo-tree-mode)
+
+  :custom
+  (undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
+  )
+
+(use-package emojify
+  :init
+  (add-hook 'after-init-hook #'global-emojify-mode)
+  )
+
+(use-package beacon
+  :init (beacon-mode 1)
+  )
+
+(use-package minimap
+  :config
+  (setq minimap-window-location 'right)
+  )
+
+(use-package smartparens
+  :config
+  (smartparens-global-mode)
+  )
+
+(use-package buffer-flip
+  :config
+  (setq buffer-flip-map
+        (let ((map (make-sparse-keymap)))
+          (define-key map (kbd "<mouse-9>")   'buffer-flip-forward) 
+          (define-key map (kbd "<mouse-8>") 'buffer-flip-backward)
+          (define-key map (kbd "ESC")     'buffer-flip-abort)
+          map))
   )
 
 (defun hash/lsp-mode-setup ()
@@ -423,48 +451,7 @@
   :hook (typescript-mode . lsp-deferred)
   )
 
-(use-package treemacs)
-
-(use-package undo-tree
-  :init
-  (global-undo-tree-mode)
-
-  :custom
-  (undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
-  )
-
-(use-package emojify
-  :init
-  (add-hook 'after-init-hook #'global-emojify-mode)
-  )
-
-(use-package beacon
-  :init (beacon-mode 1)
-  )
-
-(use-package minimap
-  :config
-  (setq minimap-window-location 'right)
-  )
-
-(use-package smartparens
-  :config
-  (smartparens-global-mode)
-  )
-
-(use-package buffer-flip
-  :config
-  (setq buffer-flip-map
-        (let ((map (make-sparse-keymap)))
-          (define-key map (kbd "<mouse-9>")   'buffer-flip-forward) 
-          (define-key map (kbd "<mouse-8>") 'buffer-flip-backward)
-          (define-key map (kbd "ESC")     'buffer-flip-abort)
-          map))
-  )
-
 (use-package pacmacs)
-
-(setq initial-buffer-choice "~/.emacs.d/Welcome.org")
 
 (defun hash/open-emacs-conf ()
   (interactive)
@@ -475,6 +462,19 @@
   (interactive)
   (find-file "~/.emacs.d/Desktop.org")
   )
+
+(general-define-key
+ "C-M-j" 'counsel-switch-buffer
+ "C-x b" 'counsel-switch-buffer
+ "C-M-<tab>" 'eshell
+ "<mouse-9>" 'buffer-flip
+ "RET" 'evil-open-below
+ )
+
+(general-create-definer hash/leader-keys
+  :keymaps '(normal insert visual emacs)
+  :prefix "SPC"
+  :global-prefix "C-SPC")
 
 (hash/leader-keys
   "t" '(:ignore t :which-key "toggle")
@@ -510,14 +510,16 @@
   "RET" '(eshell :which-key "eshell")
   )
 
-;(load-theme 'doom-Iosvkem t)
-;(load-theme 'doom-horizon t)
-;(load-theme 'doom-outrun-electric t)
-(load-theme 'doom-dracula t)
-;(load-theme 'doom-palenight t)
-;(load-theme 'doom-challenger-deep t)
+;; (load-theme 'doom-Iosvkem t)
+;; (load-theme 'doom-horizon t)
+(load-theme 'doom-outrun-electric t)
+;; (load-theme 'doom-dracula t)
+;; (load-theme 'doom-palenight t)
+;; (load-theme 'doom-challenger-deep t)
 
 (set-frame-parameter (selected-frame) 'alpha '(80 . 90))
 (add-to-list 'default-frame-alist '(alpha . (80 . 90)))
 (set-frame-parameter (selected-frame) 'fullscreen 'maximized)
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
+
+(setq initial-buffer-choice "~/.emacs.d/Welcome.org")

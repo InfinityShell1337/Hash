@@ -22,8 +22,9 @@
   (set-face-attribute 'fixed-pitch nil :font "Fira Code Retina" :height 100)
 
 #+end_src
-* Initialize Packages
-** Init Packages
+* Packages
+** Initialize Packages
+*** Init Packages
 #+begin_src emacs-lisp
 
   (require 'package)
@@ -38,7 +39,7 @@
     (package-refresh-contents))
 
 #+end_src
-** Initialize use-package on non-Linux platforms
+*** Initialize use-package on non-Linux platforms
 #+begin_src emacs-lisp
 
 (unless (package-installed-p 'use-package)
@@ -48,13 +49,13 @@
 (setq use-package-always-ensure t)
 
 #+end_src
-* Keep folders clean
+** Keep folders clean
 #+begin_src emacs-lisp
   (use-package no-littering)
   (setq auto-save-file-name-transforms
         `((".*" ,(no-littering-expand-var-file-name "auto-save/") t)))
 #+end_src
-* Line numbers
+** Line numbers
 #+begin_src emacs-lisp
 
 (column-number-mode)
@@ -69,13 +70,13 @@
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 #+end_src
-* doom-themes
+** doom-themes
 #+begin_src emacs-lisp
 
 (use-package doom-themes)
 
 #+end_src
-* Auto Update Packages
+** Auto Update Packages
 #+begin_src emacs-lisp
   (use-package auto-package-update
     :custom
@@ -85,18 +86,18 @@
     (auto-package-update-maybe)
     (auto-package-update-at-time "22:00"))
 #+end_src
-* all-the-icons
+** all-the-icons
 #+begin_src emacs-lisp
 
 (use-package all-the-icons)
 
 #+end_src
-* term
+** term
 #+begin_src emacs-lisp
 (use-package term)
 #+end_src
-* eshell
-** Main
+** eshell
+*** Main
 #+begin_src emacs-lisp
 
   (defun hash/configure-eshell ()
@@ -129,7 +130,7 @@
   (use-package eshell-up)
 
 #+end_src
-** Better prompt
+*** Better prompt
 #+begin_src emacs-lisp
 
   ;; (use-package eshell-git-prompt
@@ -158,8 +159,8 @@
   ;; (setq eshell-prompt-regexp "^[^#$\n!%&*()]* [^#$\n!%&*()]* λ ")
 
 #+end_src
-* Ivy for completions
-** Main
+** Ivy for completions
+*** Main
 #+begin_src emacs-lisp
 
 (use-package ivy
@@ -181,7 +182,7 @@
   (ivy-mode 1))
 
 #+end_src
-** ivy-rich
+*** ivy-rich
 #+begin_src emacs-lisp
 
 (use-package ivy-rich
@@ -189,7 +190,7 @@
   :init (ivy-rich-mode 1))
 
 #+end_src
-** Ivy Icons
+*** Ivy Icons
 #+begin_src emacs-lisp
 
   (use-package all-the-icons-ivy)
@@ -200,7 +201,7 @@
     )
 
 #+end_src
-** ivy-posframe
+*** ivy-posframe
 #+begin_src emacs-lisp
   (use-package ivy-posframe
     :config
@@ -212,7 +213,7 @@
     (ivy-posframe-mode 1)
     )
 #+end_src
-* Counsel for cool stuff
+** Counsel for cool stuff
 #+begin_src emacs-lisp
 
 (use-package counsel
@@ -228,14 +229,14 @@
 	  )
 
 #+end_src
-* rainbow-delimiters
+** rainbow-delimiters
 #+begin_src emacs-lisp
 
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
 
 #+end_src
-* doom-modeline
+** doom-modeline
 #+begin_src emacs-lisp
 
 (use-package doom-modeline
@@ -244,7 +245,7 @@
   :custom ((doom-modeline-height 30)))
 
 #+end_src
-* helpful
+** helpful
 #+begin_src emacs-lisp
 
 (use-package helpful
@@ -259,32 +260,14 @@
   ([remap describe-key] . helpful-key))
 
 #+end_src
-* General
-** Main
+** General
 #+begin_src emacs-lisp
 
 (use-package general
   :config (general-evil-setup t))
 
-(general-create-definer hash/leader-keys
-  :keymaps '(normal insert visual emacs)
-  :prefix "SPC"
-  :global-prefix "C-SPC")
-
 #+end_src
-** general keybindings
-#+begin_src emacs-lisp
-
-  (general-define-key
-   "C-M-j" 'counsel-switch-buffer
-   "C-x b" 'counsel-switch-buffer
-   "C-M-<tab>" 'eshell
-   "<mouse-9>" 'buffer-flip
-   "RET" 'evil-open-below
-   )
-
-#+end_src
-* Which key
+** Which key
 #+begin_src emacs-lisp
 
 (use-package which-key
@@ -295,8 +278,8 @@
   (setq which-key-idle-delay 1))
 
 #+end_src
-* Evil
-** Main
+** Evil
+*** Main
 #+begin_src emacs-lisp
 
   (use-package evil
@@ -320,7 +303,7 @@
     )
 
 #+end_src
-** Evil collection for better evil
+*** Evil collection for better evil
 #+begin_src emacs-lisp
 
 (use-package evil-collection
@@ -329,21 +312,21 @@
   (evil-collection-init))
 
 #+end_src
-** evil commenting
+*** evil commenting
 #+begin_src emacs-lisp
   (use-package evil-nerd-commenter
     :bind ("M-/" . evilnc-comment-or-uncomment-lines)
     )
 #+end_src
-* hydra
+** hydra
 #+begin_src emacs-lisp
 
 (use-package hydra
   :defer t)
 
 #+end_src
-* dired
-** Main
+** dired
+*** Main
 #+begin_src emacs-lisp
 (use-package dired
   :ensure nil
@@ -356,18 +339,18 @@
     "l" 'dired-single-buffer
     ))
 #+end_src
-** dired-single
+*** dired-single
 #+begin_src emacs-lisp
 (use-package dired-single)
 #+end_src
-** File icons
+*** File icons
 #+begin_src emacs-lisp
 (use-package all-the-icons-dired
   :hook (dired-mode . all-the-icons-dired-mode)
   )
 #+end_src
-* projectile
-** Main
+** projectile
+*** Main
 #+begin_src emacs-lisp
 
 (use-package projectile
@@ -383,15 +366,15 @@
   (setq projectile-switch-project-action #'projectile-dired))
 
 #+end_src
-** counsel-projectile (better ivy integration with projectile)
+*** counsel-projectile (better ivy integration with projectile)
 #+begin_src emacs-lisp
 
 (use-package counsel-projectile
   :config (counsel-projectile-mode))
 
 #+end_src
-* magit
-** Main
+** magit
+*** Main
 #+begin_src emacs-lisp
 
 (use-package magit
@@ -399,14 +382,14 @@
   (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
 
 #+end_src
-** forge (extra for magit)
+*** forge (extra for magit)
 #+begin_src emacs-lisp
 
 (use-package forge)
 
 #+end_src
-* Org
-** Main
+** Org
+*** Main
 #+begin_src emacs-lisp
 
 (use-package org
@@ -416,7 +399,7 @@
 	org-hide-emphasis-markers nil))
 
 #+end_src
-** org-bullets
+*** org-bullets
 #+begin_src emacs-lisp
 
 (use-package org-bullets
@@ -425,7 +408,7 @@
   (org-bullets-bullet-list '("◉" "●" "○" "◆" "●" "○" "◆")))
 
 #+end_src
-** Make org buffers in middle of screen
+*** Make org buffers in middle of screen
 #+begin_src emacs-lisp
 
 (use-package visual-fill-column
@@ -438,7 +421,7 @@
   (visual-fill-column-mode 1))
 
 #+end_src
-** Org templates
+*** Org templates
 #+begin_src emacs-lisp
 
 (require 'org-tempo)
@@ -449,13 +432,13 @@
 (add-to-list 'org-structure-template-alist '("js" . "src javascript"))
 
 #+end_src
-** Disable backup files
+*** Disable backup files
 #+begin_src emacs-lisp
 
   (setq make-backup-files nil)
 
 #+end_src
-** Auto-tangle Configuration files
+*** Auto-tangle Configuration files
 #+begin_src emacs-lisp
   (defun hash/org-babel-tangle-config ()
     (when (string-equal (file-name-directory (buffer-file-name))
@@ -465,7 +448,7 @@
 
   (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'hash/org-babel-tangle-config)))
 #+end_src
-** Org Setup
+*** Org Setup
 #+begin_src emacs-lisp
 
   (defun hash/org-mode-setup ()
@@ -473,7 +456,9 @@
     (variable-pitch-mode 1)
     (auto-fill-mode 0)
     (visual-line-mode 1)
-    (setq evil-auto-indent nil)
+    (setq evil-auto-indent nil
+          org-confirm-babel-evaluate nil
+          )
 
     (set-face-attribute 'org-block nil :foreground nil :inherit 'fixed-pitch)
     (set-face-attribute 'org-code nil :inherit '(shadow fixed-pitch))
@@ -486,7 +471,7 @@
     )
 
 #+end_src
-** Org look nice
+*** Org look nice
 #+begin_src emacs-lisp
 
   (require 'org-indent)
@@ -505,7 +490,7 @@
     (set-face-attribute (car face) nil :weight 'regular :height (cdr face)))
 
 #+end_src
-** Org present
+*** Org present
 #+begin_src emacs-lisp
 
   (defun hash/org-present-prepare-slide (buffer-name heading)
@@ -519,7 +504,7 @@
     )
 
 #+end_src
-** Org Roam
+*** Org Roam
 #+begin_src emacs-lisp
 
   (use-package org-roam
@@ -537,6 +522,59 @@
     (org-roam-setup)
     )
 
+#+end_src
+** Treemacs
+#+begin_src emacs-lisp
+  (use-package treemacs)
+#+end_src
+** undo tree
+#+begin_src emacs-lisp
+  (use-package undo-tree
+    :init
+    (global-undo-tree-mode)
+
+    :custom
+    (undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
+    )
+#+end_src
+** Emojis!
+#+begin_src emacs-lisp
+  (use-package emojify
+    :init
+    (add-hook 'after-init-hook #'global-emojify-mode)
+    )
+#+end_src
+** Beacon
+#+begin_src emacs-lisp
+  (use-package beacon
+    :init (beacon-mode 1)
+    )
+#+end_src
+** Minimap
+#+begin_src emacs-lisp
+  (use-package minimap
+    :config
+    (setq minimap-window-location 'right)
+    )
+#+end_src
+** Smart brackets
+#+begin_src emacs-lisp
+  (use-package smartparens
+    :config
+    (smartparens-global-mode)
+    )
+#+end_src
+** Buffer flip
+#+begin_src emacs-lisp
+  (use-package buffer-flip
+    :config
+    (setq buffer-flip-map
+          (let ((map (make-sparse-keymap)))
+            (define-key map (kbd "<mouse-9>")   'buffer-flip-forward) 
+            (define-key map (kbd "<mouse-8>") 'buffer-flip-backward)
+            (define-key map (kbd "ESC")     'buffer-flip-abort)
+            map))
+    )
 #+end_src
 * Language Server Protocol
 ** Header Breadcrumb
@@ -608,68 +646,10 @@
     )
 
 #+end_src
-* Treemacs
-#+begin_src emacs-lisp
-  (use-package treemacs)
-#+end_src
-* undo tree
-#+begin_src emacs-lisp
-  (use-package undo-tree
-    :init
-    (global-undo-tree-mode)
-
-    :custom
-    (undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
-    )
-#+end_src
-* Emojis!
-#+begin_src emacs-lisp
-  (use-package emojify
-    :init
-    (add-hook 'after-init-hook #'global-emojify-mode)
-    )
-#+end_src
-* Beacon
-#+begin_src emacs-lisp
-  (use-package beacon
-    :init (beacon-mode 1)
-    )
-#+end_src
-* Minimap
-#+begin_src emacs-lisp
-  (use-package minimap
-    :config
-    (setq minimap-window-location 'right)
-    )
-#+end_src
-* Smart brackets
-#+begin_src emacs-lisp
-  (use-package smartparens
-    :config
-    (smartparens-global-mode)
-    )
-#+end_src
-* Buffer flip
-#+begin_src emacs-lisp
-  (use-package buffer-flip
-    :config
-    (setq buffer-flip-map
-          (let ((map (make-sparse-keymap)))
-            (define-key map (kbd "<mouse-9>")   'buffer-flip-forward) 
-            (define-key map (kbd "<mouse-8>") 'buffer-flip-backward)
-            (define-key map (kbd "ESC")     'buffer-flip-abort)
-            map))
-    )
-#+end_src
 * Games
+** Pacman
 #+begin_src emacs-lisp
   (use-package pacmacs)
-#+end_src
-* Start Page
-#+begin_src emacs-lisp
-
-  (setq initial-buffer-choice "~/.emacs.d/Welcome.org")
-
 #+end_src
 * Keybindings
 #+begin_src emacs-lisp
@@ -683,6 +663,19 @@
     (interactive)
     (find-file "~/.emacs.d/Desktop.org")
     )
+
+  (general-define-key
+   "C-M-j" 'counsel-switch-buffer
+   "C-x b" 'counsel-switch-buffer
+   "C-M-<tab>" 'eshell
+   "<mouse-9>" 'buffer-flip
+   "RET" 'evil-open-below
+   )
+
+  (general-create-definer hash/leader-keys
+    :keymaps '(normal insert visual emacs)
+    :prefix "SPC"
+    :global-prefix "C-SPC")
 
   (hash/leader-keys
     "t" '(:ignore t :which-key "toggle")
@@ -717,25 +710,32 @@
     "/" '(counsel-M-x :which-key "M-x")
     "RET" '(eshell :which-key "eshell")
     )
-
+  
 #+end_src
-* Theme
+* Visuals
+** Theme
 #+begin_src emacs-lisp
 
-  ;(load-theme 'doom-Iosvkem t)
-  ;(load-theme 'doom-horizon t)
-  ;(load-theme 'doom-outrun-electric t)
-  (load-theme 'doom-dracula t)
-  ;(load-theme 'doom-palenight t)
-  ;(load-theme 'doom-challenger-deep t)
+  ;; (load-theme 'doom-Iosvkem t)
+  ;; (load-theme 'doom-horizon t)
+  (load-theme 'doom-outrun-electric t)
+  ;; (load-theme 'doom-dracula t)
+  ;; (load-theme 'doom-palenight t)
+  ;; (load-theme 'doom-challenger-deep t)
 
 #+end_src
-* Transparency
+** Transparency
 #+begin_src emacs-lisp
 
-    (set-frame-parameter (selected-frame) 'alpha '(80 . 90))
-    (add-to-list 'default-frame-alist '(alpha . (80 . 90)))
-    (set-frame-parameter (selected-frame) 'fullscreen 'maximized)
-    (add-to-list 'default-frame-alist '(fullscreen . maximized))
+  (set-frame-parameter (selected-frame) 'alpha '(80 . 90))
+  (add-to-list 'default-frame-alist '(alpha . (80 . 90)))
+  (set-frame-parameter (selected-frame) 'fullscreen 'maximized)
+  (add-to-list 'default-frame-alist '(fullscreen . maximized))
+
+#+end_src
+** Start Page
+#+begin_src emacs-lisp
+
+  (setq initial-buffer-choice "~/.emacs.d/Welcome.org")
 
 #+end_src
