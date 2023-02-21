@@ -35,10 +35,10 @@
   (exwm-workspace-switch-create 1)
 
   ;; Open eshell by default
-  ;;(eshell)
+  ;; (eshell)
 
   ;; Random Wallpaper
-  ;;(hash/set-random-wallpaper)
+  ;; (hash/set-random-wallpaper)
 
   ;; Start polybar
   (hash/start-panel)
@@ -48,7 +48,7 @@
   (hash/run-in-background "pasystray")
 
   ;; modeline extra
-  (display-battery-mode 1)
+  ;; (display-battery-mode 1)
   )
 
 (use-package exwm
